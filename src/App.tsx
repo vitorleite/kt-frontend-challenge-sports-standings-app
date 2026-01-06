@@ -1,20 +1,20 @@
 import './App.css';
 
-import { Button, Card, Column, Row } from './components/ui';
+import { Button, Card, Column, InputText, Row, Select } from './components/ui';
 
 function App() {
   return (
     <>
       <div className="app" data-theme="clean">
-        <header className="competitionHeader">
-          <h1>Premier League</h1>
-        </header>
+        <Row padding="lg" className="competitionHeader">
+          <h1 className="title">Premier League</h1>
+        </Row>
 
         <Column gap="lg" padding="lg">
           <Card.Root>
             <Card.Title>Add Team</Card.Title>
             <Row>
-              <input type="text" placeholder="Team Name" className="grow" />
+              <InputText placeholder="Team Name" />
               <Button>Add</Button>
             </Row>
           </Card.Root>
@@ -23,12 +23,22 @@ function App() {
             <Card.Title>Add Score</Card.Title>
             <Row gap="sm">
               <Column gap="sm">
-                <input type="text" placeholder="Home Team" className="grow" />
-                <input type="text" placeholder="Home Score" className="grow" />
+                <Select>
+                  <option value={undefined}>Home Team</option>
+                  <option value="Man Utd">Man Utd</option>
+                  <option value="Liverpool">Liverpool</option>
+                  <option value="Arsenal">Arsenal</option>
+                </Select>
+                <InputText placeholder="Home Score" />
               </Column>
               <Column gap="sm">
-                <input type="text" placeholder="Away Team" className="grow" />
-                <input type="text" placeholder="Away Score" />
+                <Select>
+                  <option value={undefined}>Away Team</option>
+                  <option value="Man Utd">Man Utd</option>
+                  <option value="Liverpool">Liverpool</option>
+                  <option value="Arsenal">Arsenal</option>
+                </Select>
+                <InputText placeholder="Away Score" />
               </Column>
             </Row>
             <Button>Add Score</Button>

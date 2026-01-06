@@ -22,17 +22,15 @@
   font-size: 1.1rem;
 }
 
-header {
-  display: flex;
+.competitionHeader {
   align-items: center;
   gap: 0.8rem;
   height: 4.6rem;
   background-color: var(--brand);
-  padding: 0.4rem 1.2rem;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
 }
-header h1 {
+.competitionHeader .title {
   font-size: 1.5rem;
   font-weight: 500;
   color: #fff;
@@ -43,19 +41,13 @@ main {
 }
 
 input,
-button {
+button,
+select {
   font-family: inherit;
   font-size: 1.1rem;
   line-height: 1.4;
   outline: none;
   height: 2.2rem;
-}
-input {
-  padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  color: var(--text);
 }
 
 .grow {

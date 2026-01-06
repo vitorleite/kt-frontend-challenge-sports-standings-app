@@ -35,11 +35,15 @@ input {
 .app[data-theme='clean'] {
   --surface: #ffffff;
   --surface-2: #f9fafb;
-  --border: #e3e6e9;
+  --surface-3: #efefef;
+  --border: #e0e2e6;
   --text: #000;
   --brand: #38003c;
 
   /* actions */
   --primary: #2563eb;
   --primary-fg: #ffffff;
+
+  --secondary: #6b7280;
+  --secondary-fg: #ffffff;
 }

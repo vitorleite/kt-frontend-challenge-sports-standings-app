@@ -1,0 +1,20 @@
+.select {
+  background: var(--surface-3);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  transition: border-color 0.2s;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.full {
+  width: 100%;
+}
