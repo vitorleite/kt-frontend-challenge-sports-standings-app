@@ -28,10 +28,10 @@ const stack = cva(styles.stack, {
 
 export interface StackProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof stack> {}
 
-export const Row: React.FC<StackProps> = ({ className, gap, padding, children }) => (
-  <div className={stack({ direction: 'row', gap, padding, className })}>{children}</div>
+export const Row: React.FC<StackProps> = ({ className, gap, padding, ...props }) => (
+  <div className={stack({ direction: 'row', gap, padding, className })} {...props} />
 );
 
-export const Column: React.FC<StackProps> = ({ className, gap, padding, children }) => (
-  <div className={stack({ direction: 'column', gap, padding, className })}>{children}</div>
+export const Column: React.FC<StackProps> = ({ className, gap, padding, ...props }) => (
+  <div className={stack({ direction: 'column', gap, padding, className })} {...props} />
 );

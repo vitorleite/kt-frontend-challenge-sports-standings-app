@@ -1,11 +1,11 @@
 import styles from './card.module.css';
 
-const Root: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ children }) => (
-  <div className={styles.card}>{children}</div>
+const Root: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ ...props }) => (
+  <div className={styles.card} {...props} />
 );
 
-const Title: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ children }) => (
-  <h4 className={styles.title}>{children}</h4>
+const Title: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({ ...props }) => (
+  <h4 className={styles.title} {...props} />
 );
 
 const Card = { Root, Title };
