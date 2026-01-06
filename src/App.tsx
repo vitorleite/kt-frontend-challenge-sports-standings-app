@@ -1,5 +1,7 @@
 import './App.css';
 
+import { Card, Column, Row } from './components/ui';
+
 function App() {
   return (
     <>
@@ -7,29 +9,30 @@ function App() {
         <header className="competitionHeader">
           <h1>Premier League</h1>
         </header>
-        <main className="column lg">
-          <section className="card">
-            <div className="title">Add Team</div>
-            <div className="row">
+
+        <Column gap="lg" padding="lg">
+          <Card.Root>
+            <Card.Title>Add Team</Card.Title>
+            <Row>
               <input type="text" placeholder="Team Name" className="grow" />
               <button className="primary">Add</button>
-            </div>
-          </section>
+            </Row>
+          </Card.Root>
 
-          <section className="card">
-            <div className="title">Add Score</div>
-            <div className="row">
-              <div className="column">
+          <Card.Root>
+            <Card.Title>Add Score</Card.Title>
+            <Row gap="sm">
+              <Column gap="sm">
                 <input type="text" placeholder="Home Team" className="grow" />
                 <input type="text" placeholder="Home Score" className="grow" />
-              </div>
-              <div className="column">
+              </Column>
+              <Column gap="sm">
                 <input type="text" placeholder="Away Team" className="grow" />
                 <input type="text" placeholder="Away Score" />
-              </div>
-            </div>
+              </Column>
+            </Row>
             <button className="primary">Add Score</button>
-          </section>
+          </Card.Root>
 
           <section className="standingsGrid">
             <div className="standingsGridHeaders">
@@ -66,7 +69,7 @@ function App() {
               <div className="center strong">14</div>
             </div>
           </section>
-        </main>
+        </Column>
       </div>
     </>
   );

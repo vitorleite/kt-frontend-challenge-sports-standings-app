@@ -1,0 +1,43 @@
+.stack {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+.gapNone {
+  gap: 0;
+}
+
+.gapSm {
+  gap: 0.4rem;
+}
+
+.gapMd {
+  gap: 0.8rem;
+}
+
+.gapLg {
+  gap: 1.2rem;
+}
+
+.paddingNone {
+  padding: 0;
+}
+
+.paddingSm {
+  padding: 0.4rem;
+}
+
+.paddingMd {
+  padding: 0.8rem;
+}
+
+.paddingLg {
+  padding: 1.2rem;
+}

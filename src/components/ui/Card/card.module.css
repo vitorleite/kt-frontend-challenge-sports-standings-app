@@ -1,0 +1,13 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1rem;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}

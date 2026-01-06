@@ -76,34 +76,6 @@ button.primary {
   flex-shrink: 1;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 0.4rem;
-}
-.column.lg {
-  gap: 1.2rem;
-}
-
-.row {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  padding: 1rem;
-  background: var(--surface-2);
-  border-radius: 8px;
-}
-.card .title {
-  font-weight: 600;
-  margin-bottom: 0.4rem;
-}
-
 .standingsGridHeaders,
 .standingsGridRow {
   display: grid;
