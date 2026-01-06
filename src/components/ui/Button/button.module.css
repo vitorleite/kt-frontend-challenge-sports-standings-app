@@ -1,0 +1,15 @@
+.button {
+  border: 0 none;
+  border-radius: var(--border-radius-md);
+  padding: 0.3rem 1rem;
+}
+
+.primary {
+  background: var(--primary);
+  color: var(--primary-fg);
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--secondary-fg);
+}

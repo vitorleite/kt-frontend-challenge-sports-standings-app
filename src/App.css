@@ -48,7 +48,6 @@ button {
   font-size: 1.1rem;
   line-height: 1.4;
   outline: none;
-  transition: all 0.2s ease-in-out;
   height: 2.2rem;
 }
 input {
@@ -57,16 +56,6 @@ input {
   border-radius: 6px;
   background: var(--surface);
   color: var(--text);
-}
-
-button {
-  border: 0 none;
-  border-radius: var(--border-radius-md);
-  padding: 0.3rem 1rem;
-}
-button.primary {
-  background: var(--primary);
-  color: var(--primary-fg);
 }
 
 .grow {

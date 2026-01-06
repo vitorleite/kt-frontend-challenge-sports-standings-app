@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Card, Column, Row } from './components/ui';
+import { Button, Card, Column, Row } from './components/ui';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
             <Card.Title>Add Team</Card.Title>
             <Row>
               <input type="text" placeholder="Team Name" className="grow" />
-              <button className="primary">Add</button>
+              <Button>Add</Button>
             </Row>
           </Card.Root>
 
@@ -31,7 +31,7 @@ function App() {
                 <input type="text" placeholder="Away Score" />
               </Column>
             </Row>
-            <button className="primary">Add Score</button>
+            <Button>Add Score</Button>
           </Card.Root>
 
           <section className="standingsGrid">
