@@ -27,3 +27,15 @@ export interface CompetitionContextValue {
   state: CompetitionState;
   actions: CompetitionActions;
 }
+
+export interface CompetitionParticipantStanding {
+  name: CompetitionParticipant;
+  played: number;
+  won: number;
+  drawn: number;
+  lost: number;
+  scoreFor: number;
+  scoreAgainst: number;
+  scoreDifference: number;
+  points: number;
+}

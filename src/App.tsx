@@ -8,7 +8,6 @@ function App() {
     <>
       <div className="app" data-theme="clean">
         <Competition.Provider config={{ title: 'Premier League' }}>
-          <Competition.Debug />
           <Competition.Header />
 
           <Column gap="lg" padding="lg">
@@ -21,6 +20,8 @@ function App() {
               <Card.Title>Add Score</Card.Title>
               <Competition.AddResultForm />
             </Card.Root>
+
+            <Competition.Standings />
           </Column>
         </Competition.Provider>
       </div>

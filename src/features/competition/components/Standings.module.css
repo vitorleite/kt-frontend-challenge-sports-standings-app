@@ -1,0 +1,47 @@
+.standingsGridHeaders,
+.standingsGridRow,
+.standingsGridEmpty {
+  display: grid;
+  grid-template-columns: minmax(100px, 4fr) 1fr 1fr 1fr 1fr 2fr;
+  grid-auto-rows: 2.8rem;
+  gap: 1px;
+  border-bottom: 1px solid var(--standings-grid-row-border);
+}
+.standingsGridHeaders {
+  font-weight: 600;
+  background-color: var(--standings-grid-header-bg);
+}
+.standingsGridRow {
+  background-color: var(--standings-grid-row-bg);
+}
+/* Standings grid cells */
+.cell,
+.standingsGridHeaders > div,
+.standingsGridRow > div {
+  display: flex;
+  align-items: center;
+}
+.standingsGridHeaders > :first-child,
+.standingsGridHeaders > :last-child,
+.standingsGridRow > :first-child,
+.standingsGridRow > :last-child {
+  padding: 0 0.5rem;
+}
+.standingsGridRow > div {
+  background-color: var(--standings-grid-cell-bg);
+}
+.cell span,
+.standingsGridRow > div span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* Empty state grid */
+.standingsGridEmpty {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+.standingsGrid .center {
+  justify-content: center;
+}
