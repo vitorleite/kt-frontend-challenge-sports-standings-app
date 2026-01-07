@@ -9,7 +9,7 @@ function App() {
     <>
       <div className="app" data-theme="clean">
         <Competition.Provider config={{ title: 'My contextual competition' }}>
-          <Competition.Debug />
+          <Competition.Header />
         </Competition.Provider>
         <CompetitionView />
       </div>

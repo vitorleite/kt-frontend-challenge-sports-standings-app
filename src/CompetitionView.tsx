@@ -58,8 +58,6 @@ export function CompetitionView() {
 
   return (
     <>
-      <CompetitionHeader title="Premier League" />
-
       <Column gap="lg" padding="lg">
         <AddParticipantForm participants={participantNames} onAdd={handleAddParticipant} />
         <AddResultForm participants={participantNames} onAdd={handleAddResult} />
