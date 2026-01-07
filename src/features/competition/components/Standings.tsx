@@ -64,9 +64,9 @@ export function Standings() {
   }, [participants, results]);
 
   return (
-    <div className={styles.standingsGrid}>
-      <div className={styles.standingsGridHeaders}>
-        <div className={`${styles.cell} ${styles.alignLeft}`}>Team</div>
+    <div className={styles.standings}>
+      <div className={styles.standingsHeaders}>
+        <div className={[styles.cell, styles.alignLeft].join(' ')}>Team</div>
         <div className={styles.cell}>P</div>
         <div className={styles.cell}>W</div>
         <div className={styles.cell}>D</div>
@@ -74,17 +74,21 @@ export function Standings() {
         <div className={styles.cell}>Pts</div>
       </div>
 
-      {standings.length === 0 && <div className={styles.standingsGridEmpty}>No participants added yet</div>}
+      {standings.length === 0 && (
+        <div className={styles.standingsEmpty}>
+          <div>No participants added yet</div>
+        </div>
+      )}
       {standings.map((row) => (
-        <div key={row.name} className={styles.standingsGridRow}>
-          <div>
+        <div key={row.name} className={styles.standingsRow}>
+          <div className={[styles.cell, styles.alignLeft, styles.truncate].join(' ')}>
             <span>{row.name}</span>
           </div>
           <div className={styles.cell}>{row.played}</div>
           <div className={styles.cell}>{row.won}</div>
           <div className={styles.cell}>{row.drawn}</div>
           <div className={styles.cell}>{row.lost}</div>
-          <div className={styles.cell}>{row.points}</div>
+          <div className={[styles.cell, styles.strong].join(' ')}>{row.points}</div>
         </div>
       ))}
     </div>
