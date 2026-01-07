@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import { forwardRef } from 'react';
 import styles from './input.module.css';
 
 const input = cva(styles.input, {
@@ -15,6 +16,8 @@ const input = cva(styles.input, {
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>, VariantProps<typeof input> {}
 
-export const InputText: React.FC<InputProps> = ({ size, variant, ...props }) => (
-  <input className={input({ size, variant })} {...props} />
-);
+export const InputText = forwardRef<HTMLInputElement, InputProps>(({ size, variant, ...props }, ref) => (
+  <input ref={ref} className={input({ size, variant })} {...props} />
+));
+
+InputText.displayName = 'InputText';
