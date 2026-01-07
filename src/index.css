@@ -26,13 +26,16 @@ input {
 }
 
 :root {
+  /* Root */
   --bg: #f3f4f6;
+
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
 }
 
 .app[data-theme='clean'] {
+  /* Generic variables, affects cards and others */
   --surface: #ffffff;
   --surface-2: #f9fafb;
   --surface-3: #efefef;
@@ -40,10 +43,38 @@ input {
   --text: #000;
   --brand: #38003c;
 
-  /* actions */
+  /* Actions */
   --primary: #2563eb;
   --primary-fg: #ffffff;
 
-  --secondary: #6b7280;
-  --secondary-fg: #ffffff;
+  /* override components to match theme */
+  --competition-header-bg: var(--brand);
+
+  --standings-grid-header-bg: var(--surface-3);
+  --standings-grid-row-border: var(--border);
+}
+
+.app[data-theme='energetic'] {
+  /* Colors */
+  --color-green-dark: #00201b;
+  --color-green: #002e26;
+  --color-green-light: #004d40;
+  --color-orange: #ff6900;
+
+  /* Generic variables, affects cards and others */
+  --surface: #002e26;
+  --surface-2: #002e26;
+  --surface-3: #002e26;
+  --border: #e0e2e6;
+  --text: #fff;
+  --brand: #002e26;
+
+  /* Actions */
+  --primary: var(--color-orange);
+  --primary-fg: #ffffff;
+
+  /* components theme */
+  --app-bg: var(--color-green);
+  --competition-header-bg: var(--color-green);
+  --standings-grid-cell-bg: var(--color-green-dark);
 }

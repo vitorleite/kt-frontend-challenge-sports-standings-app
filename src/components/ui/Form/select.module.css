@@ -1,5 +1,6 @@
 .select {
   background: var(--surface-3);
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: var(--border-radius-md);
   padding: 0.2rem 0.5rem;

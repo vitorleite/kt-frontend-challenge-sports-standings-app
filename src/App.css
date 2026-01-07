@@ -22,20 +22,6 @@
   font-size: 1.1rem;
 }
 
-.competitionHeader {
-  align-items: center;
-  gap: 0.8rem;
-  height: 4.6rem;
-  background-color: var(--brand);
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
-}
-.competitionHeader .title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #fff;
-}
-
 main {
   padding: 1.2rem;
 }
@@ -50,30 +36,71 @@ select {
   height: 2.2rem;
 }
 
-.grow {
-  flex-grow: 1;
-}
-.shrink {
-  flex-shrink: 1;
+/* Components here for now */
+.error {
+  color: var(--error-text, #b91c1c);
+  font-size: 0.9rem;
 }
 
-.standingsGridHeaders,
-.standingsGridRow {
-  display: grid;
-  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 2fr;
-  grid-auto-rows: 2.8rem;
-  border-bottom: 1px solid var(--border);
+.competitionHeader {
+  display: flex;
   align-items: center;
+  gap: 0.8rem;
+  height: 4.6rem;
+  background-color: var(--competition-header-bg);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  padding: 1.2rem;
 }
-.standingsGridHeaders :first-child,
-.standingsGridRow :first-child {
-  padding: 0 0.5rem;
+.competitionHeader .title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Standings grid */
+.standingsGridHeaders,
+.standingsGridRow,
+.standingsGridEmpty {
+  display: grid;
+  grid-template-columns: minmax(100px, 4fr) 1fr 1fr 1fr 1fr 2fr;
+  grid-auto-rows: 2.8rem;
+  gap: 1px;
+  border-bottom: 1px solid var(--standings-grid-row-border);
 }
 .standingsGridHeaders {
   font-weight: 600;
-  border-bottom: 1px solid var(--border);
-  background-color: var(--surface-2);
+  background-color: var(--standings-grid-header-bg);
+}
+.standingsGridRow {
+  background-color: var(--standings-grid-row-bg);
+}
+/* Standings grid cells */
+.standingsGridHeaders > div,
+.standingsGridRow > div {
+  display: flex;
+  align-items: center;
+}
+.standingsGridHeaders > :first-child,
+.standingsGridHeaders > :last-child,
+.standingsGridRow > :first-child,
+.standingsGridRow > :last-child {
+  padding: 0 0.5rem;
+}
+.standingsGridRow > div {
+  background-color: var(--standings-grid-cell-bg);
+}
+.standingsGridRow > div span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* Empty state grid */
+.standingsGridEmpty {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
 }
 .standingsGrid .center {
-  text-align: center;
+  justify-content: center;
 }
