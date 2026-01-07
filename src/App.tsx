@@ -2,7 +2,7 @@ import './App.css';
 
 import { CompetitionView } from './CompetitionView';
 
-import Competition from './components/competition/Competition';
+import { Competition } from './features/competition';
 
 function App() {
   return (
@@ -10,7 +10,6 @@ function App() {
       <div className="app" data-theme="clean">
         <Competition.Provider config={{ title: 'My contextual competition' }}>
           <Competition.Debug />
-          <Competition.AddParticipant />
         </Competition.Provider>
         <CompetitionView />
       </div>
