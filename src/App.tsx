@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div className="app" data-theme="clean">
-        <Competition.Provider config={{ title: 'My contextual competition' }}>
+        <Competition.Provider config={{ title: 'Premier League' }}>
           <Competition.Debug />
           <Competition.Header />
 
@@ -15,6 +15,11 @@ function App() {
             <Card.Root>
               <Card.Title>Add Team</Card.Title>
               <Competition.AddParticipantForm />
+            </Card.Root>
+
+            <Card.Root>
+              <Card.Title>Add Score</Card.Title>
+              <Competition.AddResultForm />
             </Card.Root>
           </Column>
         </Competition.Provider>

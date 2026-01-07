@@ -1,6 +1,6 @@
 import { useCompetitionContext } from '../context';
 
-export const Debug = () => {
+export function Debug() {
   const { config, state } = useCompetitionContext();
   return (
     <div style={{ fontSize: '0.8rem' }}>
@@ -8,4 +8,4 @@ export const Debug = () => {
       <pre>{JSON.stringify({ config, state }, null, 2)}</pre>
     </div>
   );
-};
+}

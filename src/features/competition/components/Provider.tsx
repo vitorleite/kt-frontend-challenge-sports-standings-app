@@ -14,7 +14,7 @@ interface CompetitionProps {
   initialState?: CompetitionState;
 }
 
-export const Provider = ({ children, config, initialState }: CompetitionProps) => {
+export function Provider({ children, config, initialState }: CompetitionProps) {
   const [participants, setParticipants] = useState<CompetitionParticipant[]>(initialState?.participants || []);
   const [results, setResults] = useState<CompetitionResult[]>(initialState?.results || []);
 
@@ -41,4 +41,4 @@ export const Provider = ({ children, config, initialState }: CompetitionProps) =
       {children}
     </CompetitionContext.Provider>
   );
-};
+}

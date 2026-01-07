@@ -3,10 +3,10 @@ import { Button, InputText, Row, Error } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
 export function AddParticipantForm() {
+  const { state, actions } = useCompetitionContext();
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const { state, actions } = useCompetitionContext();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

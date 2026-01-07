@@ -41,3 +41,15 @@
 .paddingLg {
   padding: 1.2rem;
 }
+
+.marginTopSm {
+  margin-top: 0.4rem;
+}
+
+.marginTopMd {
+  margin-top: 0.8rem;
+}
+
+.marginTopLg {
+  margin-top: 1.2rem;
+}
