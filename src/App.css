@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 #root {
-  background: var(--bg);
+  background: var(--root-bg);
   min-height: 100svh;
   padding: 2rem;
   place-content: center;
@@ -12,8 +12,8 @@
   max-width: 480px;
   margin: 0 auto;
   padding-bottom: 1rem;
-  background: var(--surface);
-  color: var(--text);
+  background: var(--app-bg);
+  color: var(--app-fg);
   box-shadow:
     0 4px 6px -1px rgb(0 0 0 / 0.1),
     0 2px 4px -2px rgb(0 0 0 / 0.1);

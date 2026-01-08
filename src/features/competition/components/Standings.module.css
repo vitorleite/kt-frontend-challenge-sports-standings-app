@@ -2,10 +2,10 @@
 .standingsRow,
 .standingsEmpty {
   display: grid;
-  grid-template-columns: 6fr repeat(4, 1fr) 2fr;
+  grid-template-columns: 4fr repeat(4, 1fr) 2fr;
   grid-auto-rows: 2.8rem;
   gap: 1px;
-  border-bottom: 1px solid var(--standings-grid-row-border);
+  border-bottom: var(--competition-standings-row-separator);
 }
 
 /* Empty state */
@@ -18,10 +18,10 @@
 /* Header and Row styles */
 .standingsHeaders {
   font-weight: 600;
-  background-color: var(--standings-grid-header-bg);
+  background-color: var(--competition-standings-header-bg);
 }
 .standingsRow {
-  background-color: var(--standings-grid-row-bg);
+  background-color: var(--competition-standings-row-bg);
 }
 
 /* Cells */
@@ -34,7 +34,7 @@
   padding: 0 0.5rem;
 }
 .standingsRow .cell {
-  background-color: var(--standings-grid-cell-bg);
+  background-color: var(--competition-standings-cell-bg);
 }
 
 /* Utilities */

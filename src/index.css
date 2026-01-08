@@ -26,16 +26,49 @@ input {
 }
 
 :root {
-  /* Root */
-  --bg: #f3f4f6;
+  /* Base theme, extended/overriden in page implementations as needed */
+  --grey-400: #9ca3af;
+  --grey-300: #d1d5db;
+  --grey-200: #efefef;
+  --grey-100: #f9fafb;
 
+  /* App level variables, used as defaults below, to ensure things work and look a certain way */
+  --text-1: #000;
+  --app-bg: var(--white);
+  --app-fg: var(--text-1);
+  --surface-1-bg: var(--grey-100);
+  --surface-1-fg: var(--text-1);
+  --surface-2-bg: var(--grey-400);
+  --surface-2-fg: #fff;
+  --surface-3-bg: #fff;
+  --surface-3-fg: var(--text-1);
+  --border-color: var(--grey-400);
   --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
+  --border-radius-md: calc(var(--border-radius-sm) * 2);
+  --border-radius-lg: calc(var(--border-radius-sm) * 3);
+
+  /* Component variables, in base theme should use app level variables, in implementations use whatever color they need */
+  --button-primary-bg: var(--surface-2-bg);
+  --button-primary-fg: var(--surface-2-fg);
+
+  --input-bg: var(--surface-3-bg);
+  --input-fg: var(--surface-3-fg);
+  --input-border: 1px solid var(--border-color);
+
+  --select-border: 1px solid var(--border-color);
+  --select-bg: #fff;
+  --select-fg: var(--text-1);
+
+  --card-bg: var(--surface-1-bg);
+  --card-fg: var(--surface-1-fg);
 }
 
 .app[data-theme='clean'] {
+  --grey-dark: #efefef;
+  --grey: #f9fafb;
+
   /* Generic variables, affects cards and others */
+  --app-bg: #ffffff;
   --surface: #ffffff;
   --surface-2: #f9fafb;
   --surface-3: #efefef;
@@ -50,8 +83,8 @@ input {
   /* override components to match theme */
   --competition-header-bg: var(--brand);
 
-  --standings-grid-header-bg: var(--surface-3);
-  --standings-grid-row-border: var(--border);
+  --competition-standings-header-bg: var(--surface-3);
+  --competition-standings-row-separator: var(--border);
 }
 
 .app[data-theme='energetic'] {

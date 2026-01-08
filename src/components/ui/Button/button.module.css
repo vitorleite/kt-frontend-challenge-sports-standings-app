@@ -5,11 +5,11 @@
 }
 
 .primary {
-  background: var(--primary);
-  color: var(--primary-fg);
+  background: var(--button-primary-bg);
+  color: var(--button-primary-fg);
 }
 
 .secondary {
-  background: var(--secondary);
-  color: var(--secondary-fg);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-fg);
 }

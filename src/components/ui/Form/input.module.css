@@ -1,15 +1,16 @@
 .input {
   padding: 0.2rem 0.5rem;
-  border: 1px solid var(--border);
+  border: var(--input-border);
   border-radius: var(--border-radius-md);
-  background: var(--surface);
-  color: var(--text);
+  background: var(--input-bg);
+  color: var(--input-fg);
   width: 100%;
+  outline: none;
 }
 
-.input:focus {
-  outline: none;
-  border-color: var(--primary);
+.input::placeholder {
+  color: inherit;
+  opacity: 0.4;
 }
 
 .block {
