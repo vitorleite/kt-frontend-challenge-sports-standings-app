@@ -16,9 +16,14 @@ export interface CompetitionState {
   results: CompetitionResult[];
 }
 
+export interface ActionResult {
+  ok: boolean;
+  error?: string;
+}
+
 export interface CompetitionActions {
-  addParticipant: (participant: CompetitionParticipant) => void;
-  addResult: (result: CompetitionResult) => void;
+  addParticipant: (participant: CompetitionParticipant) => ActionResult;
+  addResult: (result: CompetitionResult) => ActionResult;
 }
 
 export interface CompetitionContextValue {

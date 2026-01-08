@@ -21,7 +21,7 @@
 
 .pageSwitcher {
   position: absolute;
-  top: 1rem;
+  top: 2rem;
   right: 1rem;
   display: flex;
   flex-direction: column;

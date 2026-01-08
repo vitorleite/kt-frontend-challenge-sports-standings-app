@@ -1,9 +1,9 @@
 import { type FormEvent, useRef, useState } from 'react';
-import { Button, InputText, Row, Error } from '@/components/ui';
+import { Button, InputText, Row, Error, Column } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
 export function AddParticipantForm() {
-  const { state, actions } = useCompetitionContext();
+  const { actions } = useCompetitionContext();
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -13,18 +13,12 @@ export function AddParticipantForm() {
 
     const name = inputRef.current?.value.trim() || '';
 
-    if (name === '') {
-      setErrorMessage(`Participant name cannot be empty`);
+    const result = actions.addParticipant(name);
+
+    if (!result.ok) {
+      setErrorMessage(result.error || 'Failed to add participant');
       return;
     }
-
-    const alreadyExists = state.participants.some((participant) => participant.toLowerCase() === name.toLowerCase());
-    if (alreadyExists) {
-      setErrorMessage(`Participant already exists`);
-      return;
-    }
-
-    actions.addParticipant(name);
 
     if (inputRef.current) {
       inputRef.current.value = '';
@@ -37,11 +31,13 @@ export function AddParticipantForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Row>
-        <InputText ref={inputRef} variant="error" onChange={handleInputChange} placeholder="Team Name" />
-        <Button>Add</Button>
-      </Row>
-      {errorMessage && <Error>{errorMessage}</Error>}
+      <Column gap="sm">
+        <Row>
+          <InputText ref={inputRef} variant="error" onChange={handleInputChange} placeholder="Team Name" />
+          <Button>Add</Button>
+        </Row>
+        {errorMessage && <Error>{errorMessage}</Error>}
+      </Column>
     </form>
   );
 }

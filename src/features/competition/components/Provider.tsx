@@ -18,15 +18,50 @@ export function Provider({ children, config, initialState }: CompetitionProps) {
   const [participants, setParticipants] = useState<CompetitionParticipant[]>(initialState?.participants || []);
   const [results, setResults] = useState<CompetitionResult[]>(initialState?.results || []);
 
+  const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
+    return results.some(
+      (result) =>
+        (result.participantA === participantA && result.participantB === participantB) ||
+        (result.participantA === participantB && result.participantB === participantA)
+    );
+  };
+
   const actions: CompetitionActions = {
     addParticipant: (participant: CompetitionParticipant) => {
-      if (!participants.includes(participant)) {
-        setParticipants([...participants, participant]);
+      if (!participant || participant.trim() === '') {
+        return { ok: false, error: 'Participant name cannot be empty' };
       }
+
+      if (participants.includes(participant)) {
+        return { ok: false, error: 'Participant already exists' };
+      }
+
+      setParticipants([...participants, participant]);
+      return { ok: true };
     },
     addResult: (result: CompetitionResult) => {
-      // TODO: validation
+      if (!participants.includes(result.participantA) || !participants.includes(result.participantB)) {
+        return { ok: false, error: 'Both participants must be registered' };
+      }
+
+      if (result.participantA === result.participantB) {
+        return { ok: false, error: 'Cannot add result for same participant' };
+      }
+
+      if (isNaN(result.scoreA) || isNaN(result.scoreB)) {
+        return { ok: false, error: 'Scores must be valid numbers' };
+      }
+
+      if (result.scoreA < 0 || result.scoreB < 0) {
+        return { ok: false, error: 'Scores cannot be less than zero' };
+      }
+
+      if (hasPlayedBefore(result.participantA, result.participantB)) {
+        return { ok: false, error: 'These participants have already played against each other' };
+      }
+
       setResults([...results, result]);
+      return { ok: true };
     }
   };
 

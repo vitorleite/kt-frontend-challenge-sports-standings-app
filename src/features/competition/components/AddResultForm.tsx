@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react';
-import { Button, Column, InputText, Row, Select } from '@/components/ui';
+import { Button, Column, InputText, Row, Select, Error } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
 export function AddResultForm() {
@@ -7,6 +7,7 @@ export function AddResultForm() {
     state: { participants },
     actions
   } = useCompetitionContext();
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [participantA, setParticipantA] = useState('');
   const [participantB, setParticipantB] = useState('');
@@ -16,12 +17,24 @@ export function AddResultForm() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    actions.addResult({
+    const result = actions.addResult({
       participantA,
       participantB,
       scoreA: Number(scoreA),
       scoreB: Number(scoreB)
     });
+
+    if (!result.ok) {
+      setErrorMessage(result.error || 'Failed to add result');
+      return;
+    }
+
+    // Clear form
+    setParticipantA('');
+    setParticipantB('');
+    setScoreA('');
+    setScoreB('');
+    setErrorMessage(null);
   };
 
   return (
@@ -56,6 +69,7 @@ export function AddResultForm() {
       </Row>
       <Column marginTop="sm">
         <Button>Add Score</Button>
+        {errorMessage && <Error>{errorMessage}</Error>}
       </Column>
     </form>
   );

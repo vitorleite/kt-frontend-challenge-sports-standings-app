@@ -45,12 +45,19 @@ input {
   --text-1: #000;
   --app-bg: var(--white);
   --app-fg: var(--text-1);
+
+  /* cards */
   --surface-1-bg: var(--grey-100);
   --surface-1-fg: var(--text-1);
+
+  /* primary action button */
   --surface-2-bg: var(--grey-400);
   --surface-2-fg: #fff;
+
+  /* inputs, selects, etc */
   --surface-3-bg: #fff;
   --surface-3-fg: var(--text-1);
+
   --border-color: var(--grey-400);
   --border-radius-sm: 4px;
   --border-radius-md: calc(var(--border-radius-sm) * 2);
