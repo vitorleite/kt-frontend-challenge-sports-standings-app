@@ -10,6 +10,11 @@ export type CompetitionResult = {
 export interface CompetitionConfig {
   title: string;
   matchFormat?: 'singleRoundRobin' | 'doubleRoundRobin';
+  pointsSystem?: {
+    win: number;
+    draw: number;
+    loss: number;
+  };
 }
 
 export interface CompetitionState {
@@ -28,9 +33,9 @@ export interface CompetitionActions {
 }
 
 export interface CompetitionContextValue {
-  config: CompetitionConfig;
-  state: CompetitionState;
-  actions: CompetitionActions;
+  config: Required<CompetitionConfig>;
+  state: Required<CompetitionState>;
+  actions: Required<CompetitionActions>;
 }
 
 export interface CompetitionParticipantStanding {

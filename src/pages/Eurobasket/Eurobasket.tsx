@@ -12,7 +12,11 @@ export function Eurobasket() {
 
   return (
     <div className={`app ${styles.eurobasket}`}>
-      <Competition.Provider config={{ title: 'EUROBASKET' }} initialState={state} onStateChange={handleChange}>
+      <Competition.BasketballProvider
+        config={{ title: 'EUROBASKET' }}
+        initialState={state}
+        onStateChange={handleChange}
+      >
         <div className={styles.gridContainer}>
           <div className={styles.gridHeader}>
             <Competition.Header>
@@ -41,7 +45,7 @@ export function Eurobasket() {
             </div>
           </div>
         </div>
-      </Competition.Provider>
+      </Competition.BasketballProvider>
     </div>
   );
 }

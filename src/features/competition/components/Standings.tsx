@@ -6,8 +6,9 @@ import type { CompetitionParticipant, CompetitionParticipantStanding } from '../
 import styles from './Standings.module.css';
 
 export function Standings() {
-  const { state } = useCompetitionContext();
+  const { state, config } = useCompetitionContext();
   const { participants, results } = state;
+  const { pointsSystem } = config;
 
   const standings = useMemo(() => {
     const standingsMap = new Map<CompetitionParticipant, CompetitionParticipantStanding>();
@@ -39,17 +40,19 @@ export function Standings() {
 
       if (result.scoreA > result.scoreB) {
         homeTeam.won++;
-        homeTeam.points += 3;
+        homeTeam.points += pointsSystem.win;
         awayTeam.lost++;
+        awayTeam.points += pointsSystem.loss;
       } else if (result.scoreA < result.scoreB) {
         awayTeam.won++;
-        awayTeam.points += 3;
+        awayTeam.points += pointsSystem.win;
         homeTeam.lost++;
+        homeTeam.points += pointsSystem.loss;
       } else {
         homeTeam.drawn++;
         awayTeam.drawn++;
-        homeTeam.points += 1;
-        awayTeam.points += 1;
+        homeTeam.points += pointsSystem.draw;
+        awayTeam.points += pointsSystem.draw;
       }
 
       homeTeam.scoreDifference = homeTeam.scoreFor - homeTeam.scoreAgainst;
@@ -61,7 +64,7 @@ export function Standings() {
       if (b.scoreDifference !== a.scoreDifference) return b.scoreDifference - a.scoreDifference;
       return b.scoreFor - a.scoreFor;
     });
-  }, [participants, results]);
+  }, [participants, results, pointsSystem]);
 
   return (
     <div className={styles.standings}>

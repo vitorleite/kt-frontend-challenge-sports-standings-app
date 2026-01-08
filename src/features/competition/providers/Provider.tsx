@@ -8,12 +8,21 @@ import type {
   CompetitionActions
 } from '../types';
 
-interface CompetitionProps {
+export interface CompetitionProps {
   children: React.ReactNode;
   config: CompetitionConfig;
   initialState?: CompetitionState;
   onStateChange?: (state: CompetitionState) => void;
 }
+
+const defaultConfig: Partial<CompetitionConfig> = {
+  matchFormat: 'singleRoundRobin',
+  pointsSystem: {
+    win: 3,
+    draw: 1,
+    loss: 0
+  }
+};
 
 export function Provider({ children, config, initialState, onStateChange = () => {} }: CompetitionProps) {
   const [participants, setParticipants] = useState<CompetitionParticipant[]>(initialState?.participants || []);
@@ -26,7 +35,7 @@ export function Provider({ children, config, initialState, onStateChange = () =>
   // We could compose this provider and have specific variants for different
   // competition types/formats/sports in the future
   // Then some methods could be different depending on the format
-  const matchFormat = config.matchFormat || 'singleRoundRobin';
+  const matchFormat = config.matchFormat || defaultConfig.matchFormat;
   const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
     if (matchFormat === 'doubleRoundRobin') {
       return results.some((result) => result.participantA === participantA && result.participantB === participantB);
@@ -81,7 +90,7 @@ export function Provider({ children, config, initialState, onStateChange = () =>
   return (
     <CompetitionContext.Provider
       value={{
-        config,
+        config: { ...defaultConfig, ...config } as Required<CompetitionConfig>,
         actions,
         state: { participants, results }
       }}
