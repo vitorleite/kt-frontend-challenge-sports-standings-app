@@ -18,9 +18,11 @@ Single page application to manage sports tournaments.
 - [x] Eurobasket
 - [x] Wimbledon
 - [~] Configuration for different components
-- [ ] Validations
-  - [ ] Single match
-  - [ ] Home/Away
+  - [x] Actions buttons
+  - [ ] Standings component (icons, columns)
+- [x] Validations
+  - [x] Single match
+  - [x] Home/Away
 - [ ] Store data in localStorage
 - [ ] Responsive app layout
 - [ ] i18n
