@@ -6,3 +6,4 @@ export * from './AddResultForm';
 export * from './Standings';
 export * from './ActionButtons';
 export * from './Results';
+export * from './ResultsCard';

@@ -18,9 +18,7 @@ export function Eurobasket() {
         </Column>
 
         <Column gap="md" padding="md">
-          <Card.Root>
-            <Competition.Results />
-          </Card.Root>
+          <Competition.ResultsCard />
 
           <Card.Root>
             <Card.Title>Score Table:</Card.Title>
