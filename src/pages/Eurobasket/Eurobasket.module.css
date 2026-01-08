@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.eurobasket {
+  /* Color palette */
+  --green-light: #004d40;
+  --green: #012f26;
+  --green-dark: #00201b;
+  --orange: #ff6900;
+  --grey-100: #f9fafb;
+  --grey-200: #efefef;
+  --grey-300: #dee0e4;
+
+  /* App level variables */
+  --font-family: Montserrat, sans-serif;
+  --text-1: #fff;
+  --text-2: #000;
+  --app-bg: var(--green);
+  --app-fg: var(--text-1);
+  --surface-1-bg: var(--green);
+  --surface-1-fg: var(--text-1);
+  --surface-2-bg: var(--orange);
+  --surface-2-fg: #fff;
+  --surface-3-bg: #fff;
+  --surface-3-fg: var(--text-2);
+  --border-color: var(--grey-300);
+  --border-radius-sm: 4px;
+  --border-radius-md: calc(var(--border-radius-sm) * 2);
+  --border-radius-lg: calc(var(--border-radius-sm) * 3);
+
+  /* UI components variables */
+  --button-primary-bg: var(--surface-2-bg);
+  --button-primary-fg: var(--surface-2-fg);
+
+  --input-bg: var(--surface-3-bg);
+  --input-fg: var(--surface-3-fg);
+  --input-border: 1px solid var(--border-color);
+
+  --select-border: 1px solid var(--border-color);
+  --select-bg: #fff;
+  --select-fg: var(--text-2);
+
+  --card-bg: var(--surface-1-bg);
+  --card-fg: var(--surface-1-fg);
+
+  /* Competition components overrides */
+  --competition-standings-cell-bg: var(--green-dark);
+}

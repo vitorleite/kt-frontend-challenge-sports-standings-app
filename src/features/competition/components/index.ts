@@ -4,3 +4,5 @@ export * from './Header';
 export * from './AddParticipantForm';
 export * from './AddResultForm';
 export * from './Standings';
+export * from './ActionButtons';
+export * from './Results';

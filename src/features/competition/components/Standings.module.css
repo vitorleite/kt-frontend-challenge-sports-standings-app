@@ -1,10 +1,16 @@
+.standings {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
 .standingsHeaders,
 .standingsRow,
 .standingsEmpty {
   display: grid;
   grid-template-columns: 4fr repeat(4, 1fr) 2fr;
   grid-auto-rows: 2.8rem;
-  gap: 1px;
+  column-gap: 1px;
   border-bottom: var(--competition-standings-row-separator);
 }
 

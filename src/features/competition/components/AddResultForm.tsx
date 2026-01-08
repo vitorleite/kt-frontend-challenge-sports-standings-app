@@ -29,7 +29,7 @@ export function AddResultForm() {
       <Row gap="sm">
         <Column gap="sm">
           <Select value={participantA} onChange={(e) => setParticipantA(e.target.value)}>
-            <option value={undefined} selected disabled>
+            <option value="" disabled>
               Home Team
             </option>
             {participants.map((participant) => (
@@ -42,7 +42,7 @@ export function AddResultForm() {
         </Column>
         <Column gap="sm">
           <Select value={participantB} onChange={(e) => setParticipantB(e.target.value)}>
-            <option value={undefined} selected disabled>
+            <option value="" disabled>
               Away Team
             </option>
             {participants.map((participant) => (
