@@ -6,7 +6,8 @@
   cursor: pointer;
   border: 0 none;
   border-radius: var(--border-radius-md);
-  padding: 0.3rem 1rem;
+  padding: var(--button-padding, 0.3rem 1rem);
+  font-size: var(--button-font-size, 1rem);
   transition:
     background 0.2s ease-in-out,
     color 0.2s ease-in-out;

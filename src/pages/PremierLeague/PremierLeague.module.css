@@ -43,7 +43,7 @@
 
   /* Competition components overrides */
   --competition-header-bg: var(--purple);
-  --competition-header-text: #ffffff;
+  --competition-header-fg: #ffffff;
   --competition-standings-header-bg: var(--grey-100);
   --competition-standings-row-separator: 1px solid var(--border-color);
 }

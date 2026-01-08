@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+.wimbledon {
+  /* Color palette */
+  --green: #063;
+  --purple: #42075b;
+  --grey-100: #f3f4f6;
+  --grey-200: #e5e7eb;
+
+  /* App level variables */
+  --font-family: 'Space Mono', sans-serif;
+  --font-size: 1.4rem;
+  --text-1: #fff;
+  --text-2: #000;
+  --app-bg: #fff;
+  --app-fg: var(--text-2);
+  --surface-1-bg: var(--green);
+  --surface-1-fg: var(--text-1);
+  --surface-2-bg: var(--green);
+  --surface-2-fg: #fff;
+  --surface-3-bg: #fff;
+  --surface-3-fg: var(--text-2);
+  --border-color: var(--grey-300);
+  --border-radius-sm: 4px;
+  --border-radius-md: calc(var(--border-radius-sm) * 2);
+  --border-radius-lg: calc(var(--border-radius-sm) * 3);
+
+  /* UI components variables */
+  --button-primary-bg: var(--surface-2-bg);
+  --button-primary-fg: var(--surface-2-fg);
+  --button-font-size: 1.2rem;
+  --button-padding: 1.5rem 1.2rem;
+
+  --button-secondary-bg: var(--surface-1-bg);
+  --button-secondary-fg: var(--surface-1-fg);
+
+  --input-bg: var(--surface-3-bg);
+  --input-fg: var(--surface-3-fg);
+  --input-border: 1px solid var(--border-color);
+  --input-padding: 1.4rem 1rem;
+
+  --select-border: 1px solid var(--border-color);
+  --select-bg: #fff;
+  --select-fg: var(--text-2);
+  --select-height: 3rem;
+
+  --card-bg: var(--surface-1-bg);
+  --card-fg: var(--surface-1-fg);
+
+  /* Competition components overrides */
+  --competition-header-bg: var(--green);
+  --competition-header-fg: var(--text-1);
+  --competition-header-font-size: 2rem;
+
+  --competition-standings-header-bg: var(--grey-100);
+  --competition-standings-row-separator: 1px solid var(--border-color);
+}

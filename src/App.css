@@ -1,6 +1,5 @@
 #root {
   background: var(--root-bg);
-  min-height: 100svh;
   padding: 2rem;
   place-content: center;
 }
@@ -18,6 +17,15 @@
   border-radius: var(--border-radius-lg);
   font-family: var(--font-family);
   font-size: 1rem;
+}
+
+.pageSwitcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 main {
