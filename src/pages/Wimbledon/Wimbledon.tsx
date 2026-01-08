@@ -4,11 +4,15 @@ import { Column } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import styles from './Wimbledon.module.css';
+import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
+import type { CompetitionState } from '@/features/competition/types';
 
 export function Wimbledon() {
+  const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('wimbledon');
+
   return (
     <div className={`app ${styles.wimbledon}`}>
-      <Competition.Provider config={{ title: 'Wimbledon' }}>
+      <Competition.Provider config={{ title: 'Wimbledon' }} initialState={state} onStateChange={handleChange}>
         <Competition.Header>
           <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />
         </Competition.Header>

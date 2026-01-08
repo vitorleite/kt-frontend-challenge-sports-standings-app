@@ -4,11 +4,15 @@ import { Card, Column } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import styles from './Eurobasket.module.css';
+import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
+import type { CompetitionState } from '@/features/competition/types';
 
 export function Eurobasket() {
+  const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('eurobasket');
+
   return (
     <div className={`app ${styles.eurobasket}`}>
-      <Competition.Provider config={{ title: 'EUROBASKET' }}>
+      <Competition.Provider config={{ title: 'EUROBASKET' }} initialState={state} onStateChange={handleChange}>
         <Competition.Header>
           <EurobasketHeaderIcon width="2rem" height="2rem" />
         </Competition.Header>

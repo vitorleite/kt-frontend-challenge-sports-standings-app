@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CompetitionContext } from '../context';
 import type {
   CompetitionConfig,
@@ -12,12 +12,18 @@ interface CompetitionProps {
   children: React.ReactNode;
   config: CompetitionConfig;
   initialState?: CompetitionState;
+  onStateChange?: (state: CompetitionState) => void;
 }
 
-export function Provider({ children, config, initialState }: CompetitionProps) {
+export function Provider({ children, config, initialState, onStateChange = () => {} }: CompetitionProps) {
   const [participants, setParticipants] = useState<CompetitionParticipant[]>(initialState?.participants || []);
   const [results, setResults] = useState<CompetitionResult[]>(initialState?.results || []);
 
+  useEffect(() => {
+    onStateChange({ participants, results });
+  }, [participants, results, onStateChange]);
+
+  // I do a configuration here, but we could wrap this Provider in specific Providers for different competition formats
   const matchFormat = config.matchFormat || 'singleRoundRobin';
   const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
     if (matchFormat === 'doubleRoundRobin') {

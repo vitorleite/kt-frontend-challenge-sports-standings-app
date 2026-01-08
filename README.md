@@ -23,6 +23,6 @@ Single page application to manage sports tournaments.
 - [x] Validations
   - [x] Single match
   - [x] Home/Away
-- [ ] Store data in localStorage
+- [x] Store data in localStorage
 - [ ] Responsive app layout
 - [ ] i18n
