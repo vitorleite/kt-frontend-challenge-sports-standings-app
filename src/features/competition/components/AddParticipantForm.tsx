@@ -2,8 +2,22 @@ import { type FormEvent, useRef, useState } from 'react';
 import { Button, InputText, Row, Error, Column } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
+const DEFAULT_PROPS = {
+  labels: {
+    participantName: 'Team Name'
+  }
+};
+
+export type AddParticipantFormProps = {
+  labels?: Partial<typeof DEFAULT_PROPS.labels>;
+};
+
 export function AddParticipantForm() {
-  const { actions } = useCompetitionContext();
+  const { actions, config } = useCompetitionContext();
+
+  const { labels } = {
+    labels: { ...DEFAULT_PROPS.labels, ...config.addParticipantLabels }
+  };
 
   const inputRef = useRef<HTMLInputElement>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -33,7 +47,7 @@ export function AddParticipantForm() {
     <form onSubmit={handleSubmit}>
       <Column gap="sm">
         <Row>
-          <InputText ref={inputRef} variant="error" onChange={handleInputChange} placeholder="Team Name" />
+          <InputText ref={inputRef} variant="error" onChange={handleInputChange} placeholder={labels.participantName} />
           <Button>Add</Button>
         </Row>
         {errorMessage && <Error>{errorMessage}</Error>}

@@ -19,10 +19,12 @@ Single page application to manage sports tournaments.
 - [x] Wimbledon
 - [~] Configuration for different components
   - [x] Actions buttons
-  - [ ] Standings component (icons, columns)
+  - [x] Standings component columns
+  - [ ] Standings component icons
 - [x] Validations
   - [x] Single match
   - [x] Home/Away
 - [x] Store data in localStorage
-- [ ] Responsive app layout
+- [~] Responsive app layout
+- [x] Example of composing a Provider
 - [ ] i18n

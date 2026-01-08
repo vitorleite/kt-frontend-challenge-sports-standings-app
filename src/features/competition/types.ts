@@ -1,3 +1,5 @@
+import type { AddParticipantFormProps, AddResultFormProps, StandingsColumn } from './components';
+
 export type CompetitionParticipant = string;
 
 export type CompetitionResult = {
@@ -9,12 +11,18 @@ export type CompetitionResult = {
 
 export interface CompetitionConfig {
   title: string;
+  // I'd separate 'title' from these 'rules' and also from 'customisations' below
   matchFormat?: 'singleRoundRobin' | 'doubleRoundRobin';
   pointsSystem?: {
     win: number;
     draw: number;
     loss: number;
   };
+  // These below would be 'customisations', but a better approach could be i18n with namespaces
+  addParticipantLabels?: AddParticipantFormProps['labels'];
+  addResultLabels?: AddResultFormProps['labels'];
+  // A more optimised version would be an object/map with the 'key' as key and a config as value
+  standingsColumns?: StandingsColumn[];
 }
 
 export interface CompetitionState {

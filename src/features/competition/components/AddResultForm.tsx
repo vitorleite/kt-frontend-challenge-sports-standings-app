@@ -2,11 +2,30 @@ import { type FormEvent, useState } from 'react';
 import { Button, Column, InputText, Row, Select, Error } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
+const DEFAULT_PROPS = {
+  labels: {
+    homeParticipant: 'Home Team',
+    homeResult: 'Home Result',
+    awayParticipant: 'Away Team',
+    awayResult: 'Away Result'
+  }
+};
+
+export type AddResultFormProps = {
+  labels?: Partial<typeof DEFAULT_PROPS.labels>;
+};
+
 export function AddResultForm() {
   const {
+    config,
     state: { participants },
     actions
   } = useCompetitionContext();
+
+  const { labels } = {
+    labels: { ...DEFAULT_PROPS.labels, ...config.addResultLabels }
+  };
+
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [participantA, setParticipantA] = useState('');
@@ -43,7 +62,7 @@ export function AddResultForm() {
         <Column gap="sm">
           <Select value={participantA} onChange={(e) => setParticipantA(e.target.value)}>
             <option value="" disabled>
-              Home Team
+              {labels.homeParticipant}
             </option>
             {participants.map((participant) => (
               <option key={participant} value={participant}>
@@ -51,12 +70,12 @@ export function AddResultForm() {
               </option>
             ))}
           </Select>
-          <InputText placeholder="Home Score" value={scoreA} onChange={(e) => setScoreA(e.target.value)} />
+          <InputText placeholder={labels.homeResult} value={scoreA} onChange={(e) => setScoreA(e.target.value)} />
         </Column>
         <Column gap="sm">
           <Select value={participantB} onChange={(e) => setParticipantB(e.target.value)}>
             <option value="" disabled>
-              Away Team
+              {labels.awayParticipant}
             </option>
             {participants.map((participant) => (
               <option key={participant} value={participant}>
@@ -64,7 +83,7 @@ export function AddResultForm() {
               </option>
             ))}
           </Select>
-          <InputText placeholder="Away Score" value={scoreB} onChange={(e) => setScoreB(e.target.value)} />
+          <InputText placeholder={labels.awayResult} value={scoreB} onChange={(e) => setScoreB(e.target.value)} />
         </Column>
       </Row>
       <Column marginTop="sm">

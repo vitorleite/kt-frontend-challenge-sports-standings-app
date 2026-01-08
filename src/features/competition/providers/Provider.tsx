@@ -15,13 +15,28 @@ export interface CompetitionProps {
   onStateChange?: (state: CompetitionState) => void;
 }
 
-const defaultConfig: Partial<CompetitionConfig> = {
+const defaultConfig: Required<Omit<CompetitionConfig, 'title'>> = {
   matchFormat: 'singleRoundRobin',
   pointsSystem: {
     win: 3,
     draw: 1,
     loss: 0
-  }
+  },
+  addParticipantLabels: {
+    participantName: 'Team Name'
+  },
+  addResultLabels: {
+    homeParticipant: 'Home Team',
+    homeResult: 'Home Score',
+    awayParticipant: 'Away Team',
+    awayResult: 'Away Score'
+  },
+  standingsColumns: [
+    { label: 'P', key: 'played' },
+    { label: 'W', key: 'won' },
+    { label: 'D', key: 'drawn' },
+    { label: 'L', key: 'lost' }
+  ]
 };
 
 export function Provider({ children, config, initialState, onStateChange = () => {} }: CompetitionProps) {

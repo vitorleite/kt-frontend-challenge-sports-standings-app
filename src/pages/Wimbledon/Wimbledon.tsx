@@ -11,7 +11,28 @@ export function Wimbledon() {
 
   return (
     <div className={`app ${styles.wimbledon}`}>
-      <Competition.Provider config={{ title: 'Wimbledon' }} initialState={state} onStateChange={handleChange}>
+      <Competition.Provider
+        config={{
+          title: 'Wimbledon',
+          standingsColumns: [
+            { label: 'Player', key: 'name' },
+            { label: 'M', key: 'played' },
+            { label: 'W', key: 'won' },
+            { label: 'L', key: 'lost' }
+          ],
+          addParticipantLabels: {
+            participantName: 'Player Name'
+          },
+          addResultLabels: {
+            homeParticipant: 'Player A',
+            awayParticipant: 'Player B',
+            homeResult: 'Score A',
+            awayResult: 'Score B'
+          }
+        }}
+        initialState={state}
+        onStateChange={handleChange}
+      >
         <div className={styles.gridProvider}>
           <div className={styles.gridHeader}>
             <Competition.Header>

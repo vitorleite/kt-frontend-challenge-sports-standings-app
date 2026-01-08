@@ -8,7 +8,7 @@
 .standingsRow,
 .standingsEmpty {
   display: grid;
-  grid-template-columns: 4fr repeat(4, 1fr) 2fr;
+  grid-template-columns: 4fr repeat(var(--columns-count), 1fr) 2fr;
   grid-auto-rows: 2.8rem;
   column-gap: 1px;
   border-bottom: var(--competition-standings-row-separator);

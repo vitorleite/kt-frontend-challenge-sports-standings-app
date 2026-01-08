@@ -5,10 +5,23 @@ import type { CompetitionParticipant, CompetitionParticipantStanding } from '../
 
 import styles from './Standings.module.css';
 
+export type StandingsColumn = {
+  label: string;
+  key: keyof CompetitionParticipantStanding;
+};
+
+function findColumnByKey(value: string) {
+  return (col: StandingsColumn) => col.key === value;
+}
+
 export function Standings() {
   const { state, config } = useCompetitionContext();
   const { participants, results } = state;
-  const { pointsSystem } = config;
+  const { pointsSystem, standingsColumns } = config;
+
+  const teamColumnLabel = standingsColumns.find(findColumnByKey('name'))?.label || 'Team';
+  const pointsColumnLabel = standingsColumns.find(findColumnByKey('points'))?.label || 'Pts';
+  const columns = standingsColumns.filter((col) => col.key !== 'name' && col.key !== 'points');
 
   const standings = useMemo(() => {
     const standingsMap = new Map<CompetitionParticipant, CompetitionParticipantStanding>();
@@ -67,14 +80,20 @@ export function Standings() {
   }, [participants, results, pointsSystem]);
 
   return (
-    <div className={styles.standings}>
+    <div
+      className={styles.standings}
+      style={
+        {
+          '--columns-count': columns.length
+        } as React.CSSProperties
+      }
+    >
       <div className={styles.standingsHeaders}>
-        <div className={[styles.cell, styles.alignLeft].join(' ')}>Team</div>
-        <div className={styles.cell}>P</div>
-        <div className={styles.cell}>W</div>
-        <div className={styles.cell}>D</div>
-        <div className={styles.cell}>L</div>
-        <div className={styles.cell}>Pts</div>
+        <div className={[styles.cell, styles.alignLeft].join(' ')}>{teamColumnLabel}</div>
+        {columns.map((col) => (
+          <div className={styles.cell}>{col.label}</div>
+        ))}
+        <div className={styles.cell}>{pointsColumnLabel}</div>
       </div>
 
       {standings.length === 0 && (
@@ -87,10 +106,9 @@ export function Standings() {
           <div className={[styles.cell, styles.alignLeft, styles.truncate].join(' ')}>
             <span>{row.name}</span>
           </div>
-          <div className={styles.cell}>{row.played}</div>
-          <div className={styles.cell}>{row.won}</div>
-          <div className={styles.cell}>{row.drawn}</div>
-          <div className={styles.cell}>{row.lost}</div>
+          {columns.map((col) => (
+            <div className={styles.cell}>{row[col.key]}</div>
+          ))}
           <div className={[styles.cell, styles.strong].join(' ')}>{row.points}</div>
         </div>
       ))}

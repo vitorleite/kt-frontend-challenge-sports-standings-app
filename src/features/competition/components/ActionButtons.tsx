@@ -2,7 +2,7 @@ import { Button, type ButtonProps, Row, Column } from '@/components/ui';
 import { useState, type SVGProps } from 'react';
 import { Competition } from '..';
 
-const DefaultProps = {
+const DEFAULT_PROPS = {
   labels: {
     addParticipant: 'Add Participant',
     addResult: 'Add Score'
@@ -14,14 +14,14 @@ const DefaultProps = {
 };
 
 export type ActionButtonsProps = {
-  labels?: Partial<typeof DefaultProps.labels>;
-  intent?: Partial<typeof DefaultProps.intent>;
+  labels?: Partial<typeof DEFAULT_PROPS.labels>;
+  intent?: Partial<typeof DEFAULT_PROPS.intent>;
 };
 
 export function ActionButtons({ config }: { config?: ActionButtonsProps }) {
   const { labels, intent } = {
-    labels: { ...DefaultProps.labels, ...config?.labels },
-    intent: { ...DefaultProps.intent, ...config?.intent }
+    labels: { ...DEFAULT_PROPS.labels, ...config?.labels },
+    intent: { ...DEFAULT_PROPS.intent, ...config?.intent }
   };
   const [showParticipantForm, setShowParticipantForm] = useState(false);
   const [showResultForm, setShowResultForm] = useState(false);
