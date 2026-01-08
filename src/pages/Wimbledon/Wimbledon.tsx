@@ -14,7 +14,12 @@ export function Wimbledon() {
         </Competition.Header>
 
         <Column gap="lg" padding="lg">
-          <Competition.ActionButtons />
+          <Competition.ActionButtons
+            config={{
+              labels: { addParticipant: 'Add Player' },
+              intent: { addResult: 'secondary' }
+            }}
+          />
 
           <Competition.Standings />
         </Column>

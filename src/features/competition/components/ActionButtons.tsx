@@ -1,8 +1,28 @@
-import { Button, Row, Column } from '@/components/ui';
+import { Button, type ButtonProps, Row, Column } from '@/components/ui';
 import { useState, type SVGProps } from 'react';
 import { Competition } from '..';
 
-export function ActionButtons() {
+const DefaultProps = {
+  labels: {
+    addParticipant: 'Add Participant',
+    addResult: 'Add Score'
+  },
+  intent: {
+    addParticipant: 'primary' as ButtonProps['intent'],
+    addResult: 'primary' as ButtonProps['intent']
+  }
+};
+
+export type ActionButtonsProps = {
+  labels?: Partial<typeof DefaultProps.labels>;
+  intent?: Partial<typeof DefaultProps.intent>;
+};
+
+export function ActionButtons({ config }: { config?: ActionButtonsProps }) {
+  const { labels, intent } = {
+    labels: { ...DefaultProps.labels, ...config?.labels },
+    intent: { ...DefaultProps.intent, ...config?.intent }
+  };
   const [showParticipantForm, setShowParticipantForm] = useState(false);
   const [showResultForm, setShowResultForm] = useState(false);
 
@@ -19,15 +39,15 @@ export function ActionButtons() {
   return (
     <>
       <Row gap="space-between">
-        <Button onClick={toggleParticipantForm}>
+        <Button intent={intent.addParticipant} onClick={toggleParticipantForm}>
           {!showParticipantForm && <ExpandIcon />}
           {showParticipantForm && <CollapseIcon />}
-          Add Participant
+          {labels.addParticipant}
         </Button>
-        <Button onClick={toggleResultForm}>
+        <Button intent={intent.addResult} onClick={toggleResultForm}>
           {!showResultForm && <ExpandIcon />}
           {showResultForm && <CollapseIcon />}
-          Add Score
+          {labels.addResult}
         </Button>
       </Row>
       {(showParticipantForm || showResultForm) && (

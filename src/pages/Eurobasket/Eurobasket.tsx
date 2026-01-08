@@ -14,7 +14,11 @@ export function Eurobasket() {
         </Competition.Header>
 
         <Column gap="lg" padding="md">
-          <Competition.ActionButtons />
+          <Competition.ActionButtons
+            config={{
+              labels: { addParticipant: 'Add Team' }
+            }}
+          />
         </Column>
 
         <Column gap="md" padding="md">
