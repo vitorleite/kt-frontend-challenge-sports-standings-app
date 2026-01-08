@@ -9,7 +9,6 @@ export type CompetitionResult = {
 
 export interface CompetitionConfig {
   title: string;
-  iconName?: string;
 }
 
 export interface CompetitionState {
