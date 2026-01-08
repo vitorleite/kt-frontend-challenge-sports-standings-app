@@ -6,7 +6,7 @@ import styles from './PremierLeague.module.css';
 export function PremierLeague() {
   return (
     <div className={`app ${styles.premierLeague}`}>
-      <Competition.Provider config={{ title: 'Premier League' }}>
+      <Competition.Provider config={{ title: 'Premier League', matchFormat: 'doubleRoundRobin' }}>
         <Competition.Header />
 
         <Column gap="lg" padding="lg">

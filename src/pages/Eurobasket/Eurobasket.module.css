@@ -26,6 +26,7 @@
   --border-radius-sm: 4px;
   --border-radius-md: calc(var(--border-radius-sm) * 2);
   --border-radius-lg: calc(var(--border-radius-sm) * 3);
+  --error-text: #ff4d4f;
 
   /* UI components variables */
   --button-primary-bg: var(--surface-2-bg);

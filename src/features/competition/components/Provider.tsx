@@ -18,7 +18,12 @@ export function Provider({ children, config, initialState }: CompetitionProps) {
   const [participants, setParticipants] = useState<CompetitionParticipant[]>(initialState?.participants || []);
   const [results, setResults] = useState<CompetitionResult[]>(initialState?.results || []);
 
+  const matchFormat = config.matchFormat || 'singleRoundRobin';
   const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
+    if (matchFormat === 'doubleRoundRobin') {
+      return results.some((result) => result.participantA === participantA && result.participantB === participantB);
+    }
+
     return results.some(
       (result) =>
         (result.participantA === participantA && result.participantB === participantB) ||

@@ -9,6 +9,7 @@ export type CompetitionResult = {
 
 export interface CompetitionConfig {
   title: string;
+  matchFormat?: 'singleRoundRobin' | 'doubleRoundRobin';
 }
 
 export interface CompetitionState {
