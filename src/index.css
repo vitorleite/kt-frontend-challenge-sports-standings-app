@@ -32,6 +32,15 @@ input {
   --grey-200: #efefef;
   --grey-100: #f9fafb;
 
+  /*
+    As is, all variables defined below are needed in the page implementations as well,
+    in order to recompute the CSS variables correctly
+    
+    A better approach would be to have these defined only once here,
+    and have the page implementations only override the app and component
+    ones as needed, unfortunately they won't recalculate correctly
+  */
+
   /* App level variables, used as defaults below, to ensure things work and look a certain way */
   --text-1: #000;
   --app-bg: var(--white);

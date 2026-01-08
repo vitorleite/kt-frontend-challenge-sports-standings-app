@@ -3,13 +3,9 @@ import './App.css';
 import { PremierLeague } from './pages/PremierLeague/PremierLeague';
 
 function App() {
-  return (
-    <>
-      <div className="app">
-        <PremierLeague />
-      </div>
-    </>
-  );
+  const showPremierLeague = true;
+
+  return <>{showPremierLeague && <PremierLeague />}</>;
 }
 
 export default App;

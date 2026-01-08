@@ -11,7 +11,8 @@ const stack = cva(styles.stack, {
       none: styles.gapNone,
       sm: styles.gapSm,
       md: styles.gapMd,
-      lg: styles.gapLg
+      lg: styles.gapLg,
+      'space-between': styles.gapSpaceBetween
     },
     padding: {
       none: styles.paddingNone,

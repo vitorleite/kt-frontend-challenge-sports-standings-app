@@ -1,7 +1,19 @@
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
   border: 0 none;
   border-radius: var(--border-radius-md);
   padding: 0.3rem 1rem;
+  transition:
+    background 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(1.15); /* Slightly brighten on hover, better option would be a variable */
+  }
 }
 
 .primary {
