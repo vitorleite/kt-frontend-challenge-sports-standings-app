@@ -51,7 +51,7 @@ export function ActionButtons({ config }: { config?: ActionButtonsProps }) {
         </Button>
       </Row>
       {(showParticipantForm || showResultForm) && (
-        <Column>
+        <Column marginTop="sm">
           {showParticipantForm && <Competition.AddParticipantForm />}
           {showResultForm && <Competition.AddResultForm />}
         </Column>

@@ -1,14 +1,21 @@
 #root {
   background: var(--root-bg);
-  padding: 2rem;
+  padding: 1rem;
+  min-height: 100vh;
   place-content: center;
 }
 
+@media screen and (min-width: 480px) {
+  #root {
+    padding: 4rem;
+  }
+}
+
 .app {
-  position: relative;
-  max-width: 480px;
+  height: 700px;
+  min-width: 380px;
+  max-width: 980px;
   margin: 0 auto;
-  padding-bottom: 1rem;
   background: var(--app-bg);
   color: var(--app-fg);
   box-shadow:
@@ -20,29 +27,13 @@
 }
 
 .pageSwitcher {
-  position: absolute;
-  top: 2rem;
-  right: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.2rem auto 2rem;
   gap: 0.4rem;
 }
 
-main {
-  padding: 1.2rem;
-}
-
-input,
-button,
-select {
-  font-family: inherit;
-  font-size: 1rem;
-  line-height: 1.4;
-  outline: none;
-  height: 2.2rem;
-}
-
-/* Components here for now */
 .error {
   color: var(--error-text, #b91c1c);
   font-size: 0.9rem;

@@ -23,7 +23,9 @@ export function Provider({ children, config, initialState, onStateChange = () =>
     onStateChange({ participants, results });
   }, [participants, results, onStateChange]);
 
-  // I do a configuration here, but we could wrap this Provider in specific Providers for different competition formats
+  // We could compose this provider and have specific variants for different
+  // competition types/formats/sports in the future
+  // Then some methods could be different depending on the format
   const matchFormat = config.matchFormat || 'singleRoundRobin';
   const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
     if (matchFormat === 'doubleRoundRobin') {

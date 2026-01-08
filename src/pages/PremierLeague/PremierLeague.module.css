@@ -11,7 +11,7 @@
   /* App level variables */
   --font-family: 'Roboto', sans-serif;
   --text-1: #000;
-  --app-bg: var(--white);
+  --app-bg: #fff;
   --app-fg: var(--text-1);
   --surface-1-bg: var(--grey-100);
   --surface-1-fg: var(--text-1);
@@ -46,4 +46,37 @@
   --competition-header-fg: #ffffff;
   --competition-standings-header-bg: var(--grey-100);
   --competition-standings-row-separator: 1px solid var(--border-color);
+}
+
+/* Responsiveness */
+.gridContainer {
+  display: grid;
+  grid-template-rows: 75px minmax(0, 1fr);
+  grid-template-columns: 1fr;
+  height: 700px;
+}
+
+.gridHeader {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+.gridContent {
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 980px) {
+  .gridContent {
+    grid-template-columns: repeat(3, 1fr);
+    overflow-y: unset;
+  }
+
+  .gridItem:nth-child(3) {
+    overflow-y: auto;
+  }
 }

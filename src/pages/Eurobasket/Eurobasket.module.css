@@ -46,3 +46,36 @@
   /* Competition components overrides */
   --competition-standings-cell-bg: var(--green-dark);
 }
+
+/* Responsiveness */
+.gridContainer {
+  display: grid;
+  grid-template-rows: 75px minmax(0, 1fr);
+  grid-template-columns: 1fr;
+  height: 700px;
+}
+
+.gridHeader {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+.gridContent {
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+@media (min-width: 980px) {
+  .gridContent {
+    grid-template-columns: repeat(3, 1fr);
+    overflow-y: unset;
+  }
+
+  .gridItem:nth-child(3) {
+    overflow-y: auto;
+  }
+}

@@ -37,9 +37,15 @@ function PageSwitcher({
 }) {
   return (
     <>
-      <Button onClick={() => onChangePage('PremierLeague')}>Premier League</Button>
-      <Button onClick={() => onChangePage('Eurobasket')}>Eurobasket</Button>
-      <Button onClick={() => onChangePage('Wimbledon')}>Wimbledon</Button>
+      <Button size="sm" onClick={() => onChangePage('PremierLeague')}>
+        Premier League
+      </Button>
+      <Button size="sm" onClick={() => onChangePage('Eurobasket')}>
+        Eurobasket
+      </Button>
+      <Button size="sm" onClick={() => onChangePage('Wimbledon')}>
+        Wimbledon
+      </Button>
     </>
   );
 }

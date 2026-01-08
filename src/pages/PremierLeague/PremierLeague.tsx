@@ -1,4 +1,4 @@
-import { Column, Card } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import styles from './PremierLeague.module.css';
@@ -15,21 +15,31 @@ export function PremierLeague() {
         initialState={state}
         onStateChange={handleChange}
       >
-        <Competition.Header />
+        <div className={styles.gridContainer}>
+          <div className={styles.gridHeader}>
+            <Competition.Header />
+          </div>
 
-        <Column gap="lg" padding="lg">
-          <Card.Root>
-            <Card.Title>Add Team</Card.Title>
-            <Competition.AddParticipantForm />
-          </Card.Root>
+          <div className={styles.gridContent}>
+            <div className={styles.gridItem}>
+              <Card.Root>
+                <Card.Title>Add Team</Card.Title>
+                <Competition.AddParticipantForm />
+              </Card.Root>
+            </div>
 
-          <Card.Root>
-            <Card.Title>Add Score</Card.Title>
-            <Competition.AddResultForm />
-          </Card.Root>
+            <div className={styles.gridItem}>
+              <Card.Root>
+                <Card.Title>Add Score</Card.Title>
+                <Competition.AddResultForm />
+              </Card.Root>
+            </div>
 
-          <Competition.Standings />
-        </Column>
+            <div className={styles.gridItem}>
+              <Competition.Standings />
+            </div>
+          </div>
+        </div>
       </Competition.Provider>
     </div>
   );

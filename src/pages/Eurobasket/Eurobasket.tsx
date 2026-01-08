@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-import { Card, Column } from '@/components/ui';
+import { Card } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import styles from './Eurobasket.module.css';
@@ -13,26 +13,34 @@ export function Eurobasket() {
   return (
     <div className={`app ${styles.eurobasket}`}>
       <Competition.Provider config={{ title: 'EUROBASKET' }} initialState={state} onStateChange={handleChange}>
-        <Competition.Header>
-          <EurobasketHeaderIcon width="2rem" height="2rem" />
-        </Competition.Header>
+        <div className={styles.gridContainer}>
+          <div className={styles.gridHeader}>
+            <Competition.Header>
+              <EurobasketHeaderIcon width="2rem" height="2rem" />
+            </Competition.Header>
+          </div>
 
-        <Column gap="lg" padding="md">
-          <Competition.ActionButtons
-            config={{
-              labels: { addParticipant: 'Add Team' }
-            }}
-          />
-        </Column>
+          <div className={styles.gridContent}>
+            <div className={styles.gridItem}>
+              <Competition.ActionButtons
+                config={{
+                  labels: { addParticipant: 'Add Team' }
+                }}
+              />
+            </div>
 
-        <Column gap="md" padding="md">
-          <Competition.ResultsCard />
+            <div className={styles.gridItem}>
+              <Competition.Results />
+            </div>
 
-          <Card.Root>
-            <Card.Title>Score Table:</Card.Title>
-            <Competition.Standings />
-          </Card.Root>
-        </Column>
+            <div className={styles.gridItem}>
+              <Card.Root>
+                <Card.Title>Score Table:</Card.Title>
+                <Competition.Standings />
+              </Card.Root>
+            </div>
+          </div>
+        </div>
       </Competition.Provider>
     </div>
   );

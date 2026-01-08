@@ -1,6 +1,5 @@
 import type { SVGProps } from 'react';
 
-import { Column } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import styles from './Wimbledon.module.css';
@@ -13,20 +12,28 @@ export function Wimbledon() {
   return (
     <div className={`app ${styles.wimbledon}`}>
       <Competition.Provider config={{ title: 'Wimbledon' }} initialState={state} onStateChange={handleChange}>
-        <Competition.Header>
-          <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />
-        </Competition.Header>
+        <div className={styles.gridProvider}>
+          <div className={styles.gridHeader}>
+            <Competition.Header>
+              <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />
+            </Competition.Header>
+          </div>
 
-        <Column gap="lg" padding="lg">
-          <Competition.ActionButtons
-            config={{
-              labels: { addParticipant: 'Add Player' },
-              intent: { addResult: 'secondary' }
-            }}
-          />
+          <div className={styles.gridContent}>
+            <div className={styles.gridItem}>
+              <Competition.ActionButtons
+                config={{
+                  labels: { addParticipant: 'Add Player' },
+                  intent: { addResult: 'secondary' }
+                }}
+              />
+            </div>
 
-          <Competition.Standings />
-        </Column>
+            <div className={styles.gridItem}>
+              <Competition.Standings />
+            </div>
+          </div>
+        </div>
       </Competition.Provider>
     </div>
   );

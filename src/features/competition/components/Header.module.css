@@ -6,8 +6,8 @@
   background-color: var(--competition-header-bg);
   color: var(--competition-header-fg);
   padding: var(--competition-header-padding, 1.2rem);
-  border-top-left-radius: inherit;
-  border-top-right-radius: inherit;
+  border-top-left-radius: var(--border-radius-lg);
+  border-top-right-radius: var(--border-radius-lg);
 }
 
 .title {

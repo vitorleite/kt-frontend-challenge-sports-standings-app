@@ -9,6 +9,7 @@ const button = cva(styles.button, {
     },
     size: {
       auto: '',
+      sm: styles.sizeSm,
       block: styles.block
     }
   },

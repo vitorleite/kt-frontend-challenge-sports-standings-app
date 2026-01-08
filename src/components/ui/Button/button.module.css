@@ -17,6 +17,11 @@
   }
 }
 
+.sizeSm {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+}
+
 .primary {
   background: var(--button-primary-bg);
   color: var(--button-primary-fg);
