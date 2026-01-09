@@ -6,7 +6,13 @@
 
 ```bash
 git clone https://github.com/vitorleite/kt-frontend-challenge-sports-standings-app.git
+```
+
+```bash
 cd kt-frontend-challenge-sports-standings-app
+```
+
+```bash
 npm install
 ```
 
@@ -46,7 +52,7 @@ Competition data is stored locally using local storage, but different adapters c
 
 ## Process
 
-#### 1. Analysis, discovery and architecture planning
+### 1. Analysis, discovery and architecture planning
 
 - Analysed the challenge to build the 3 different views
 - Identified common patterns and the variations in the description and the designs provided
@@ -54,7 +60,7 @@ Competition data is stored locally using local storage, but different adapters c
 - Learning modern React fundamentals, mapping concepts with my experience of Vue
 - Priority was simplicity, minimal dependencies and clear code
 
-#### 2. Competition feature
+### 2. Competition feature
 
 - Early on was creating components under a `components/competition` folder, and passing state in the tree, but intended to refactor to redux once stable
 - Introduced redux, but decided not to pursue it further for this challenge. Given the scope and my past experience with vuex, preferred something more composable
@@ -64,13 +70,13 @@ Competition data is stored locally using local storage, but different adapters c
 - Logic centralised through the context allowed later to introduce redux if wanted
 - Main goal was to centralise domain logic while keeping UI components mostly presentational
 
-#### 3. Components UI and Competition
+### 3. Components UI and Competition
 
 - Initially created the components to make the Premier League work, adjusted the design (a bit too much at times), added some theming variables
 - Created some UI components to facilitate development and start organising things
 - Separated and stabilised the competition components, header, add participant, add result, standings
 
-#### 4. Page-specific implementations
+### 4. Page-specific implementations
 
 - Created the 3 separate implementations
   - Each uses the shared provider
@@ -80,7 +86,7 @@ Competition data is stored locally using local storage, but different adapters c
   - Eurobasket uses a custom Basketball wrapper as an example of provider composition
 - All implementations live under their own folder, where specific components can live and other customisations
 
-#### 5. Themes
+### 5. Themes
 
 - Layered CSS variable system (at least an idea of how it could look)
   - Base theme in index.css
@@ -88,19 +94,19 @@ Competition data is stored locally using local storage, but different adapters c
   - Scoped to page wrapper to prevent conflicts
 - Intention is to support different visual identities per brand/implementation
 
-#### 6. State persistence
+### 6. State persistence
 
 - Implemented a hook to handle localStorage persistence
 - Provider accepts `initialState` and `onStateChange` callback for integration with other persistence layers
 - Other implementations should be straightforward (redux, tanstack db)
 
-#### 7. Responsive design
+### 7. Responsive design
 
 - Mobile first approach
 - Uses a grid to decide how many columns to show per breakpoint
-- This is an area that would need more work, I didn't worry too much about it
+- This is an area that would need more work, I didn't manage to focus and expand it as I would like to
 
-#### 8. Developer experience
+### 8. Developer experience
 
 - Alias (`@/`) for cleaner imports
 - Component co-location (css module next to component)
