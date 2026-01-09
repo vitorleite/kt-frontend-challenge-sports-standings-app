@@ -12,8 +12,8 @@ type CellOverrides = {
 };
 
 export function createCellRenderer(overrides: CellOverrides): CellRenderer {
-  return (key, value, row) => {
+  return (key, value): React.ReactNode => {
     const override = overrides[key];
-    return override ? override(value as never) : value;
+    return override ? override(value as never) : (value as React.ReactNode);
   };
 }
