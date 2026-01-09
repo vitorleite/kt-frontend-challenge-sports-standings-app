@@ -150,11 +150,6 @@ React component model and composition patterns felt intuitive, especially coming
 
 I opted for CSS modules for a pragmatic approach to styling in this challenge. It wasn't perfect, and sent me into loops at times, but it felt clearer and more maintainable than CSS-in-JS for the scope
 
-## Missed goals
-
-- No icons on the Eurobasket implementation. Initially I was going to pass a configuration for the icon in the participant, but later decided not to, I'd need to allow picking an icon for the participant when adding it, or, through the name find an icon, would work for national teams, but never got around to it
-- i18n, wanted to add, but figured it wasn't mandatory and prioritised other things over it. Could have helped with different labels per sport
-
 ## Scope (previously TODO)
 
 - [x] Create initial markup and styles
@@ -173,7 +168,8 @@ I opted for CSS modules for a pragmatic approach to styling in this challenge. I
   - [x] Actions buttons
   - [x] Standings component columns
   - [x] Labels (team/player)
-  - [ ] Standings component icons
+  - [x] Show flags in Eurobasket
+  - [x] Standings component icons
 - [x] Validations
   - [x] Single match
   - [x] Home/Away

@@ -100,3 +100,21 @@
     overflow-y: auto;
   }
 }
+
+.wonCell,
+.lostCell {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: center;
+  align-items: center;
+}
+.checkIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: green;
+}
+.crossIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: red;
+}

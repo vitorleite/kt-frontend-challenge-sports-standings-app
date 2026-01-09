@@ -6,6 +6,7 @@ import { Competition } from '@/features/competition';
 import styles from './Eurobasket.module.css';
 import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
 import type { CompetitionState } from '@/features/competition/types';
+import { createCellRenderer } from '@/features/competition/utils/cellRenderer';
 
 export function Eurobasket() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('eurobasket');
@@ -35,14 +36,14 @@ export function Eurobasket() {
 
             <div className={styles.gridItem}>
               <Card.Root>
-                <Competition.Results renderName={nameRenderer} />
+                <Competition.Results renderName={ParticipantNameWithFlag} />
               </Card.Root>
             </div>
 
             <div className={styles.gridItem}>
               <Card.Root>
                 <Card.Title>Score Table:</Card.Title>
-                <Competition.Standings renderName={nameRenderer} />
+                <Competition.Standings renderCell={cellRenderer} />
               </Card.Root>
             </div>
           </div>
@@ -61,7 +62,7 @@ const availableFlags = {
   Lithuania: '🇱🇹'
 };
 
-function nameRenderer(name: string) {
+function ParticipantNameWithFlag(name: string) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
       {availableFlags[name as keyof typeof availableFlags] || '🏳️'}
@@ -69,6 +70,10 @@ function nameRenderer(name: string) {
     </div>
   );
 }
+
+const cellRenderer = createCellRenderer({
+  name: (value) => ParticipantNameWithFlag(value as string)
+});
 
 function EurobasketHeaderIcon(props: SVGProps<SVGSVGElement>) {
   return (

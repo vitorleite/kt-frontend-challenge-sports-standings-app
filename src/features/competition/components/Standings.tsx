@@ -4,6 +4,7 @@ import { useCompetitionContext } from '../context';
 import type { CompetitionParticipant, CompetitionParticipantStanding } from '../types';
 
 import styles from './Standings.module.css';
+import type { CellRenderer } from '../utils/cellRenderer';
 
 export type StandingsColumn = {
   label: string;
@@ -14,11 +15,13 @@ function findColumnByKey(value: string) {
   return (col: StandingsColumn) => col.key === value;
 }
 
+const defaultRenderCell: CellRenderer = (_, value) => <>{value}</>;
+
 export interface StandingsProps {
-  renderName?: (name: CompetitionParticipant) => React.ReactNode;
+  renderCell?: CellRenderer;
 }
 
-export function Standings({ renderName }: StandingsProps = {}) {
+export function Standings({ renderCell = defaultRenderCell }: StandingsProps = {}) {
   const { state, config } = useCompetitionContext();
   const { participants, results } = state;
   const { pointsSystem, standingsColumns } = config;
@@ -110,11 +113,11 @@ export function Standings({ renderName }: StandingsProps = {}) {
       {standings.map((row) => (
         <div key={row.name} className={styles.standingsRow}>
           <div className={[styles.cell, styles.alignLeft, styles.truncate].join(' ')}>
-            {renderName ? renderName(row.name) : <span>{row.name}</span>}
+            {renderCell('name', row.name, row)}
           </div>
           {columns.map((col) => (
             <div key={col.key} className={styles.cell}>
-              {row[col.key]}
+              {renderCell(col.key, row[col.key], row)}
             </div>
           ))}
           <div className={[styles.cell, styles.strong].join(' ')}>{row.points}</div>

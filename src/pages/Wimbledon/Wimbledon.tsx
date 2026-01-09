@@ -5,6 +5,8 @@ import { Competition } from '@/features/competition';
 import styles from './Wimbledon.module.css';
 import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
 import type { CompetitionState } from '@/features/competition/types';
+import { LostCell, WonCell } from './standingsConfig';
+import { createCellRenderer } from '@/features/competition/utils/cellRenderer';
 
 export function Wimbledon() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('wimbledon');
@@ -51,7 +53,7 @@ export function Wimbledon() {
             </div>
 
             <div className={styles.gridItem}>
-              <Competition.Standings />
+              <Competition.Standings renderCell={cellRenderer} />
             </div>
           </div>
         </div>
@@ -59,6 +61,11 @@ export function Wimbledon() {
     </div>
   );
 }
+
+const cellRenderer = createCellRenderer({
+  won: (value) => <WonCell>{value}</WonCell>,
+  lost: (value) => <LostCell>{value}</LostCell>
+});
 
 function WimbledonHeaderIcon(props: SVGProps<SVGSVGElement>) {
   return (
