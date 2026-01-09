@@ -4,6 +4,18 @@
 
 ### Install
 
+HTTP
+
+```bash
+git clone https://github.com/vitorleite/kt-frontend-challenge-sports-standings-app.git
+```
+
+SSH
+
+```bash
+git clone git@github.com:vitorleite/kt-frontend-challenge-sports-standings-app.git
+```
+
 ```bash
 git clone https://github.com/vitorleite/kt-frontend-challenge-sports-standings-app.git
 ```
