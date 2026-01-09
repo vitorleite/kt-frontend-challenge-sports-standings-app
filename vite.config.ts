@@ -5,6 +5,7 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/kt-frontend-challenge-sports-standings-app/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
