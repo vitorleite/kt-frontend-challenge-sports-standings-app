@@ -34,18 +34,36 @@ export function Eurobasket() {
             </div>
 
             <div className={styles.gridItem}>
-              <Competition.Results />
+              <Competition.Results renderName={nameRenderer} />
             </div>
 
             <div className={styles.gridItem}>
               <Card.Root>
                 <Card.Title>Score Table:</Card.Title>
-                <Competition.Standings />
+                <Competition.Standings renderName={nameRenderer} />
               </Card.Root>
             </div>
           </div>
         </div>
       </Competition.BasketballProvider>
+    </div>
+  );
+}
+
+// Small sample for demonstration purposes
+// this could be achieve differently
+const availableFlags = {
+  Spain: '🇪🇸',
+  France: '🇫🇷',
+  Germany: '🇩🇪',
+  Lithuania: '🇱🇹'
+};
+
+function nameRenderer(name: string) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      {availableFlags[name as keyof typeof availableFlags] || '🏳️'}
+      <span>{name}</span>
     </div>
   );
 }

@@ -14,7 +14,11 @@ function findColumnByKey(value: string) {
   return (col: StandingsColumn) => col.key === value;
 }
 
-export function Standings() {
+export interface StandingsProps {
+  renderName?: (name: CompetitionParticipant) => React.ReactNode;
+}
+
+export function Standings({ renderName }: StandingsProps = {}) {
   const { state, config } = useCompetitionContext();
   const { participants, results } = state;
   const { pointsSystem, standingsColumns } = config;
@@ -106,7 +110,7 @@ export function Standings() {
       {standings.map((row) => (
         <div key={row.name} className={styles.standingsRow}>
           <div className={[styles.cell, styles.alignLeft, styles.truncate].join(' ')}>
-            <span>{row.name}</span>
+            {renderName ? renderName(row.name) : <span>{row.name}</span>}
           </div>
           {columns.map((col) => (
             <div key={col.key} className={styles.cell}>
