@@ -16,9 +16,7 @@ SSH
 git clone git@github.com:vitorleite/kt-frontend-challenge-sports-standings-app.git
 ```
 
-```bash
-git clone https://github.com/vitorleite/kt-frontend-challenge-sports-standings-app.git
-```
+Navigate and install
 
 ```bash
 cd kt-frontend-challenge-sports-standings-app
