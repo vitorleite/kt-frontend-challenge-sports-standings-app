@@ -1,5 +1,9 @@
 # Kickertech - FE Technical Challenge
 
+## Demo
+
+You can view a demo of this application [here](https://vitorleite.github.io/kt-frontend-challenge-sports-standings-app/)
+
 ## Setup
 
 ### Install
