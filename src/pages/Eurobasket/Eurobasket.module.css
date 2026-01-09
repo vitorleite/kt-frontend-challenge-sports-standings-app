@@ -27,6 +27,7 @@
   --border-radius-md: calc(var(--border-radius-sm) * 2);
   --border-radius-lg: calc(var(--border-radius-sm) * 3);
   --error-text: #ff4d4f;
+  --scrollbar-thumb: var(--green-dark);
 
   /* UI components variables */
   --button-primary-bg: var(--surface-2-bg);
@@ -63,7 +64,7 @@
 .gridContent {
   grid-row: 2;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: repeat(2, auto) 1fr;
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
@@ -71,6 +72,7 @@
 
 @media (min-width: 980px) {
   .gridContent {
+    grid-template-rows: 1fr;
     grid-template-columns: repeat(3, 1fr);
     overflow-y: unset;
   }

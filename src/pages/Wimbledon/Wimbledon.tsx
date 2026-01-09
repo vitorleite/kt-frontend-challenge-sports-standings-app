@@ -33,7 +33,7 @@ export function Wimbledon() {
         initialState={state}
         onStateChange={handleChange}
       >
-        <div className={styles.gridProvider}>
+        <div className={styles.gridContainer}>
           <div className={styles.gridHeader}>
             <Competition.Header>
               <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />

@@ -91,7 +91,9 @@ export function Standings() {
       <div className={styles.standingsHeaders}>
         <div className={[styles.cell, styles.alignLeft].join(' ')}>{teamColumnLabel}</div>
         {columns.map((col) => (
-          <div className={styles.cell}>{col.label}</div>
+          <div key={col.key} className={styles.cell}>
+            {col.label}
+          </div>
         ))}
         <div className={styles.cell}>{pointsColumnLabel}</div>
       </div>
@@ -107,7 +109,9 @@ export function Standings() {
             <span>{row.name}</span>
           </div>
           {columns.map((col) => (
-            <div className={styles.cell}>{row[col.key]}</div>
+            <div key={col.key} className={styles.cell}>
+              {row[col.key]}
+            </div>
           ))}
           <div className={[styles.cell, styles.strong].join(' ')}>{row.points}</div>
         </div>

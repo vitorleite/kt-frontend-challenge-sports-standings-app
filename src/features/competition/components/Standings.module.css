@@ -26,7 +26,8 @@
   font-weight: 600;
   background-color: var(--competition-standings-header-bg);
 }
-.standingsRow {
+.standingsRow,
+.standingsEmpty {
   background-color: var(--competition-standings-row-bg);
 }
 

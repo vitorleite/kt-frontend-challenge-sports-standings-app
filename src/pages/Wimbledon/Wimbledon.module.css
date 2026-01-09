@@ -79,19 +79,24 @@
 .gridContent {
   grid-row: 2;
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto 1fr;
   gap: 1rem;
   padding: 1rem;
   overflow-y: auto;
 }
 
+.gridItem {
+  min-height: 0;
+}
+
 @media (min-width: 980px) {
   .gridContent {
+    grid-template-rows: 1fr;
     grid-template-columns: repeat(2, 1fr);
     overflow-y: unset;
   }
 
-  .gridItem:nth-child(3) {
+  .gridItem:nth-child(2) {
     overflow-y: auto;
   }
 }

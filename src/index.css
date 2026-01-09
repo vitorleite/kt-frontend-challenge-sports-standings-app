@@ -7,8 +7,6 @@
   margin: 0;
   padding: 0;
   border: 0 solid;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb);
 }
 
 html {
@@ -65,6 +63,8 @@ input {
   --border-radius-sm: 4px;
   --border-radius-md: calc(var(--border-radius-sm) * 2);
   --border-radius-lg: calc(var(--border-radius-sm) * 3);
+
+  --scrollbar-thumb: var(--surface-2-bg);
 
   /* Component variables, in base theme should use app level variables, in implementations use whatever color they need */
   --button-primary-bg: var(--surface-2-bg);
