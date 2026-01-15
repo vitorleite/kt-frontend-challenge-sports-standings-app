@@ -1,10 +1,10 @@
 import './App.css';
 
-import { PremierLeague } from './pages/PremierLeague/PremierLeague';
-import { Eurobasket } from './pages/Eurobasket/Eurobasket';
-import { Wimbledon } from './pages/Wimbledon/Wimbledon';
 import { useState } from 'react';
 import { Button } from './components/ui';
+import { Eurobasket } from './pages/Eurobasket/Eurobasket';
+import { PremierLeague } from './pages/PremierLeague/PremierLeague';
+import { Wimbledon } from './pages/Wimbledon/Wimbledon';
 
 function App() {
   const [showPremierLeague, setShowPremierLeague] = useState(true);

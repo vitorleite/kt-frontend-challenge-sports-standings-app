@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { CompetitionContext } from '../context';
 import type {
+  CompetitionActions,
   CompetitionConfig,
-  CompetitionState,
   CompetitionParticipant,
   CompetitionResult,
-  CompetitionActions
+  CompetitionState
 } from '../types';
 
 export interface CompetitionProps {

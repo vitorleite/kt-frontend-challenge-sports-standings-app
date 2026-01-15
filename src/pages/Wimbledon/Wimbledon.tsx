@@ -2,11 +2,11 @@ import type { SVGProps } from 'react';
 
 import { Competition } from '@/features/competition';
 
-import styles from './Wimbledon.module.css';
-import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
 import type { CompetitionState } from '@/features/competition/types';
-import { LostCell, WonCell } from './standingsConfig';
 import { createCellRenderer } from '@/features/competition/utils/cellRenderer';
+import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
+import { LostCell, WonCell } from './standingsConfig';
+import styles from './Wimbledon.module.css';
 
 export function Wimbledon() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('wimbledon');

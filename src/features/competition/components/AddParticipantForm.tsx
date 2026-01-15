@@ -1,5 +1,5 @@
+import { Button, Column, Error, InputText, Row } from '@/components/ui';
 import { type FormEvent, useRef, useState } from 'react';
-import { Button, InputText, Row, Error, Column } from '@/components/ui';
 import { useCompetitionContext } from '../context';
 
 const DEFAULT_PROPS = {

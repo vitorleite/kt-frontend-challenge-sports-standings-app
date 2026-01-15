@@ -1,4 +1,4 @@
-import { Button, type ButtonProps, Row, Column } from '@/components/ui';
+import { Button, Column, Row, type ButtonProps } from '@/components/ui';
 import { useState, type SVGProps } from 'react';
 import { Competition } from '..';
 

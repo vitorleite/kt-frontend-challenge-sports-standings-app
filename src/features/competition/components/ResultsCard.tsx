@@ -1,6 +1,6 @@
-import { useCompetitionContext } from '../context';
-import { Competition } from '..';
 import { Card } from '@/components/ui';
+import { Competition } from '..';
+import { useCompetitionContext } from '../context';
 
 export function ResultsCard() {
   const { state } = useCompetitionContext();

@@ -1,9 +1,9 @@
 import { Card } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
-import styles from './PremierLeague.module.css';
-import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
 import type { CompetitionState } from '@/features/competition/types';
+import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
+import styles from './PremierLeague.module.css';
 
 export function PremierLeague() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('premier-league');

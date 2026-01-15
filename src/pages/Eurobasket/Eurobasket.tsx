@@ -3,10 +3,10 @@ import type { SVGProps } from 'react';
 import { Card } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
-import styles from './Eurobasket.module.css';
-import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
 import type { CompetitionState } from '@/features/competition/types';
 import { createCellRenderer } from '@/features/competition/utils/cellRenderer';
+import { useLocalStoragePersistence } from '@/hooks/useLocalStoragePersistence';
+import styles from './Eurobasket.module.css';
 
 export function Eurobasket() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('eurobasket');

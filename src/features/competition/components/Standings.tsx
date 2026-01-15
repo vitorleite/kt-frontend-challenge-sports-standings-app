@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 import { useCompetitionContext } from '../context';
 import type { CompetitionParticipant, CompetitionParticipantStanding } from '../types';
 
-import styles from './Standings.module.css';
 import type { CellRenderer } from '../utils/cellRenderer';
+import styles from './Standings.module.css';
 
 export type StandingsColumn = {
   label: string;
