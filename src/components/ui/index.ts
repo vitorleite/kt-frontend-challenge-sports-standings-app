@@ -3,3 +3,4 @@ export * from './Card';
 export * from './Error';
 export * from './Form';
 export * from './Layout';
+export * from './PageLayout';

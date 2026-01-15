@@ -1,0 +1,59 @@
+.root {
+  display: grid;
+  grid-template-rows: 75px minmax(0, 1fr);
+  grid-template-columns: 1fr;
+  height: 700px;
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+.grid {
+  grid-row: 2;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Mobile: Single column for all layouts */
+.grid {
+  grid-template-rows: repeat(2, auto) 1fr;
+}
+
+/* 2-column layout has simpler mobile structure */
+.grid[data-columns='2'] {
+  grid-template-rows: auto 1fr;
+}
+
+.gridItem {
+  min-height: 0;
+}
+
+/* Desktop: Multi-column layouts */
+@media (min-width: 980px) {
+  .grid {
+    grid-template-rows: 1fr;
+    overflow-y: unset;
+  }
+
+  .grid[data-columns='2'] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid[data-columns='3'] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Last item gets scrolling in 2-column layout */
+  .grid[data-columns='2'] .gridItem:nth-child(2) {
+    overflow-y: auto;
+  }
+
+  /* Third item gets scrolling in 3-column layout */
+  .grid[data-columns='3'] .gridItem:nth-child(3) {
+    overflow-y: auto;
+  }
+}
