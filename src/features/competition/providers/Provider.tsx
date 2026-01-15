@@ -65,15 +65,20 @@ export function Provider({ children, config, initialState, onStateChange = () =>
 
   const actions: CompetitionActions = {
     addParticipant: (participant: CompetitionParticipant) => {
-      if (!participant || participant.trim() === '') {
+      const trimmed = participant.trim();
+
+      if (!participant || trimmed === '') {
         return { ok: false, error: 'Participant name cannot be empty' };
       }
 
-      if (participants.includes(participant)) {
-        return { ok: false, error: 'Participant already exists' };
+      const normalized = trimmed.toLowerCase();
+      const isDuplicate = participants.some((p) => p.toLowerCase() === normalized);
+
+      if (isDuplicate) {
+        return { ok: false, error: 'A participant with this name already exists' };
       }
 
-      setParticipants([...participants, participant]);
+      setParticipants([...participants, trimmed]);
       return { ok: true };
     },
     addResult: (result: CompetitionResult) => {
