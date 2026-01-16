@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { CompetitionContext } from '../context';
 import type {
   CompetitionActions,
   CompetitionConfig,
   CompetitionParticipant,
+  CompetitionParticipantStanding,
   CompetitionResult,
   CompetitionState
 } from '../types';
@@ -50,6 +51,9 @@ export function Provider({ children, config, initialState, onStateChange = () =>
   // We could compose this provider and have specific variants for different
   // competition types/formats/sports in the future
   // Then some methods could be different depending on the format
+  const mergedConfig = { ...defaultConfig, ...config } as Required<CompetitionConfig>;
+  const { pointsSystem } = mergedConfig;
+
   const matchFormat = config.matchFormat || defaultConfig.matchFormat;
   const hasPlayedBefore = (participantA: string, participantB: string): boolean => {
     if (matchFormat === 'doubleRoundRobin') {
@@ -62,6 +66,62 @@ export function Provider({ children, config, initialState, onStateChange = () =>
         (result.participantA === participantB && result.participantB === participantA)
     );
   };
+
+  const standings = useMemo(() => {
+    const standingsMap = new Map<CompetitionParticipant, CompetitionParticipantStanding>();
+
+    participants.forEach((participant) => {
+      standingsMap.set(participant, {
+        name: participant,
+        played: 0,
+        won: 0,
+        drawn: 0,
+        lost: 0,
+        scoreFor: 0,
+        scoreAgainst: 0,
+        scoreDifference: 0,
+        points: 0
+      });
+    });
+
+    results.forEach((result) => {
+      const homeTeam = standingsMap.get(result.participantA)!;
+      const awayTeam = standingsMap.get(result.participantB)!;
+
+      homeTeam.played++;
+      awayTeam.played++;
+      homeTeam.scoreFor += result.scoreA;
+      homeTeam.scoreAgainst += result.scoreB;
+      awayTeam.scoreFor += result.scoreB;
+      awayTeam.scoreAgainst += result.scoreA;
+
+      if (result.scoreA > result.scoreB) {
+        homeTeam.won++;
+        homeTeam.points += pointsSystem.win;
+        awayTeam.lost++;
+        awayTeam.points += pointsSystem.loss;
+      } else if (result.scoreA < result.scoreB) {
+        awayTeam.won++;
+        awayTeam.points += pointsSystem.win;
+        homeTeam.lost++;
+        homeTeam.points += pointsSystem.loss;
+      } else {
+        homeTeam.drawn++;
+        awayTeam.drawn++;
+        homeTeam.points += pointsSystem.draw;
+        awayTeam.points += pointsSystem.draw;
+      }
+
+      homeTeam.scoreDifference = homeTeam.scoreFor - homeTeam.scoreAgainst;
+      awayTeam.scoreDifference = awayTeam.scoreFor - awayTeam.scoreAgainst;
+    });
+
+    return Array.from(standingsMap.values()).sort((a, b) => {
+      if (b.points !== a.points) return b.points - a.points;
+      if (b.scoreDifference !== a.scoreDifference) return b.scoreDifference - a.scoreDifference;
+      return b.scoreFor - a.scoreFor;
+    });
+  }, [participants, results, pointsSystem]);
 
   const actions: CompetitionActions = {
     addParticipant: (participant: CompetitionParticipant) => {
@@ -110,9 +170,10 @@ export function Provider({ children, config, initialState, onStateChange = () =>
   return (
     <CompetitionContext.Provider
       value={{
-        config: { ...defaultConfig, ...config } as Required<CompetitionConfig>,
+        config: mergedConfig,
         actions,
-        state: { participants, results }
+        state: { participants, results },
+        standings
       }}
     >
       {children}

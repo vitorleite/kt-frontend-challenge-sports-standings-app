@@ -9,7 +9,7 @@ const basketballConfig: Partial<CompetitionConfig> = {
     loss: 1
   },
   standingsColumns: [
-    { label: 'W', key: 'won' },
+    { label: 'P', key: 'played' },
     { label: 'L', key: 'lost' },
     { label: 'D', key: 'drawn' }
   ]

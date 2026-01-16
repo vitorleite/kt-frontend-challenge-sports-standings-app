@@ -43,6 +43,7 @@ export interface CompetitionActions {
 export interface CompetitionContextValue {
   config: Required<CompetitionConfig>;
   state: Required<CompetitionState>;
+  standings: CompetitionParticipantStanding[];
   actions: Required<CompetitionActions>;
 }
 
