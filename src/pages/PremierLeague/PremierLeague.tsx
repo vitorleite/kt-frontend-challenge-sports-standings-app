@@ -1,4 +1,4 @@
-import { Card } from '@/components/ui';
+import { Card, PageLayout } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import type { CompetitionState } from '@/features/competition/types';
@@ -9,38 +9,36 @@ export function PremierLeague() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('premier-league');
 
   return (
-    <div className={`app ${styles.premierLeague}`}>
-      <Competition.Provider
-        config={{ title: 'Premier League', matchFormat: 'doubleRoundRobin' }}
-        initialState={state}
-        onStateChange={handleChange}
-      >
-        <div className={styles.gridContainer}>
-          <div className={styles.gridHeader}>
-            <Competition.Header />
-          </div>
+    <Competition.Provider
+      config={{ title: 'Premier League', matchFormat: 'doubleRoundRobin' }}
+      initialState={state}
+      onStateChange={handleChange}
+    >
+      <PageLayout.Root className={styles.premierLeague}>
+        <PageLayout.Header>
+          <Competition.Header />
+        </PageLayout.Header>
 
-          <div className={styles.gridContent}>
-            <div className={styles.gridItem}>
-              <Card.Root>
-                <Card.Title>Add Team</Card.Title>
-                <Competition.AddParticipantForm />
-              </Card.Root>
-            </div>
+        <PageLayout.Grid columns={3}>
+          <PageLayout.GridItem>
+            <Card.Root>
+              <Card.Title>Add Team</Card.Title>
+              <Competition.AddParticipantForm />
+            </Card.Root>
+          </PageLayout.GridItem>
 
-            <div className={styles.gridItem}>
-              <Card.Root>
-                <Card.Title>Add Score</Card.Title>
-                <Competition.AddResultForm />
-              </Card.Root>
-            </div>
+          <PageLayout.GridItem>
+            <Card.Root>
+              <Card.Title>Add Score</Card.Title>
+              <Competition.AddResultForm />
+            </Card.Root>
+          </PageLayout.GridItem>
 
-            <div className={styles.gridItem}>
-              <Competition.Standings />
-            </div>
-          </div>
-        </div>
-      </Competition.Provider>
-    </div>
+          <PageLayout.GridItem>
+            <Competition.Standings />
+          </PageLayout.GridItem>
+        </PageLayout.Grid>
+      </PageLayout.Root>
+    </Competition.Provider>
   );
 }

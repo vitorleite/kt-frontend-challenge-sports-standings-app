@@ -1,6 +1,6 @@
 import type { SVGProps } from 'react';
 
-import { Card } from '@/components/ui';
+import { Card, PageLayout } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import type { CompetitionState } from '@/features/competition/types';
@@ -12,44 +12,38 @@ export function Eurobasket() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('eurobasket');
 
   return (
-    <div className={`app ${styles.eurobasket}`}>
-      <Competition.BasketballProvider
-        config={{ title: 'EUROBASKET' }}
-        initialState={state}
-        onStateChange={handleChange}
-      >
-        <div className={styles.gridContainer}>
-          <div className={styles.gridHeader}>
-            <Competition.Header>
-              <EurobasketHeaderIcon width="2rem" height="2rem" />
-            </Competition.Header>
-          </div>
+    <Competition.BasketballProvider config={{ title: 'EUROBASKET' }} initialState={state} onStateChange={handleChange}>
+      <PageLayout.Root className={styles.eurobasket}>
+        <PageLayout.Header>
+          <Competition.Header>
+            <EurobasketHeaderIcon width="2rem" height="2rem" />
+          </Competition.Header>
+        </PageLayout.Header>
 
-          <div className={styles.gridContent}>
-            <div className={styles.gridItem}>
-              <Competition.ActionButtons
-                config={{
-                  labels: { addParticipant: 'Add Team' }
-                }}
-              />
-            </div>
+        <PageLayout.Grid columns={3}>
+          <PageLayout.GridItem>
+            <Competition.ActionButtons
+              config={{
+                labels: { addParticipant: 'Add Team' }
+              }}
+            />
+          </PageLayout.GridItem>
 
-            <div className={styles.gridItem}>
-              <Card.Root>
-                <Competition.Results renderName={ParticipantNameWithFlag} />
-              </Card.Root>
-            </div>
+          <PageLayout.GridItem>
+            <Card.Root>
+              <Competition.Results renderName={ParticipantNameWithFlag} />
+            </Card.Root>
+          </PageLayout.GridItem>
 
-            <div className={styles.gridItem}>
-              <Card.Root>
-                <Card.Title>Score Table:</Card.Title>
-                <Competition.Standings renderCell={cellRenderer} />
-              </Card.Root>
-            </div>
-          </div>
-        </div>
-      </Competition.BasketballProvider>
-    </div>
+          <PageLayout.GridItem>
+            <Card.Root>
+              <Card.Title>Score Table:</Card.Title>
+              <Competition.Standings renderCell={cellRenderer} />
+            </Card.Root>
+          </PageLayout.GridItem>
+        </PageLayout.Grid>
+      </PageLayout.Root>
+    </Competition.BasketballProvider>
   );
 }
 

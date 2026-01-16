@@ -1,5 +1,6 @@
 import type { SVGProps } from 'react';
 
+import { PageLayout } from '@/components/ui';
 import { Competition } from '@/features/competition';
 
 import type { CompetitionState } from '@/features/competition/types';
@@ -12,53 +13,51 @@ export function Wimbledon() {
   const { handleChange, state } = useLocalStoragePersistence<CompetitionState>('wimbledon');
 
   return (
-    <div className={`app ${styles.wimbledon}`}>
-      <Competition.Provider
-        config={{
-          title: 'Wimbledon',
-          standingsColumns: [
-            { label: 'Player', key: 'name' },
-            { label: 'M', key: 'played' },
-            { label: 'W', key: 'won' },
-            { label: 'L', key: 'lost' }
-          ],
-          addParticipantLabels: {
-            participantName: 'Player Name'
-          },
-          addResultLabels: {
-            homeParticipant: 'Player A',
-            awayParticipant: 'Player B',
-            homeResult: 'Score A',
-            awayResult: 'Score B'
-          }
-        }}
-        initialState={state}
-        onStateChange={handleChange}
-      >
-        <div className={styles.gridContainer}>
-          <div className={styles.gridHeader}>
-            <Competition.Header>
-              <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />
-            </Competition.Header>
-          </div>
+    <Competition.Provider
+      config={{
+        title: 'Wimbledon',
+        standingsColumns: [
+          { label: 'Player', key: 'name' },
+          { label: 'M', key: 'played' },
+          { label: 'W', key: 'won' },
+          { label: 'L', key: 'lost' }
+        ],
+        addParticipantLabels: {
+          participantName: 'Player Name'
+        },
+        addResultLabels: {
+          homeParticipant: 'Player A',
+          awayParticipant: 'Player B',
+          homeResult: 'Score A',
+          awayResult: 'Score B'
+        }
+      }}
+      initialState={state}
+      onStateChange={handleChange}
+    >
+      <PageLayout.Root className={styles.wimbledon}>
+        <PageLayout.Header>
+          <Competition.Header>
+            <WimbledonHeaderIcon width="2.5rem" height="2.5rem" />
+          </Competition.Header>
+        </PageLayout.Header>
 
-          <div className={styles.gridContent}>
-            <div className={styles.gridItem}>
-              <Competition.ActionButtons
-                config={{
-                  labels: { addParticipant: 'Add Player' },
-                  intent: { addResult: 'secondary' }
-                }}
-              />
-            </div>
+        <PageLayout.Grid columns={2}>
+          <PageLayout.GridItem>
+            <Competition.ActionButtons
+              config={{
+                labels: { addParticipant: 'Add Player' },
+                intent: { addResult: 'secondary' }
+              }}
+            />
+          </PageLayout.GridItem>
 
-            <div className={styles.gridItem}>
-              <Competition.Standings renderCell={cellRenderer} />
-            </div>
-          </div>
-        </div>
-      </Competition.Provider>
-    </div>
+          <PageLayout.GridItem>
+            <Competition.Standings renderCell={cellRenderer} />
+          </PageLayout.GridItem>
+        </PageLayout.Grid>
+      </PageLayout.Root>
+    </Competition.Provider>
   );
 }
 
